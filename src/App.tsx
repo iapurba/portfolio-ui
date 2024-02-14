@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppHeader from './layouts/AppHeader/AppHeader';
+import ResumePage from './pages/Resume.page';
+import HomePage from './pages/Home.page';
+import ContactPage from './pages/Contact.page';
+import AppFooter from './layouts/AppFooter/AppFooter';
+import AboutPage from './pages/About.page';
+import PortfolioPage from './pages/Portfolio.page';
+
+const menuItems = [
+  { name: 'Home', url: '/home' },
+  { name: 'About', url: '/about' },
+  { name: 'Portfolio', url: '/portfolio' },
+  { name: 'Resume', url: '/resume' },
+  { name: 'Contact', url: '/coontact' },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppHeader menuItems={menuItems} />
+      <HomePage/>
+      <AboutPage/>
+      <ResumePage/>
+      <PortfolioPage/>
+      <ContactPage/>
+      <AppFooter/>
     </div>
   );
 }
