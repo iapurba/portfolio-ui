@@ -1,0 +1,61 @@
+import Box from "@mui/material/Box";
+import { EmailIcon, LocationIcon, PhoneIcon } from "./styles";
+import { Typography } from "@mui/material";
+import React from "react";
+
+interface ContactItemProps {
+  icon: React.ComponentType;
+  field: string;
+  value: string;
+}
+const ContactItem: React.FC<ContactItemProps> = ({
+  icon: Icon,
+  field,
+  value,
+}) => {
+  return (
+    <Box display={"flex"} flexDirection={"row"} alignItems={"center"} margin={"6px 0"}>
+      <Icon />
+      <Box display={"flex"} flexDirection={"column"} pl={3}>
+        <Typography variant="h4">{field}</Typography>
+        <Typography variant="subtitle1">{value}</Typography>
+      </Box>
+    </Box>
+  )
+};
+
+interface ContactDetailsProps {
+  address: string;
+  email: string;
+  mobile?: string;
+}
+
+const ContactDetails: React.FC<ContactDetailsProps> = ({
+  address,
+  email,
+  mobile,
+}) => {
+  return (
+    <Box display={"flex"} flexDirection={"column"}>
+      <ContactItem
+        icon={LocationIcon}
+        field="Address"
+        value={address}
+      />
+      <ContactItem
+        icon={EmailIcon}
+        field="Email"
+        value={email}
+      />
+      {mobile &&
+        <ContactItem
+          icon={PhoneIcon}
+          field="Phone"
+          value={mobile}
+        />
+      }
+    </Box>
+  );
+};
+
+export default ContactDetails;
