@@ -35,7 +35,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ menuItems }) => {
                         )
                     })}
                     <CustomButton
-                        variant="secondary"
+                        variant="outlined"
                         label="Download CV"
                         onClick={() => ({})}
                     />

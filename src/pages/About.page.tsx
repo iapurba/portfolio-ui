@@ -7,7 +7,7 @@ const AboutPage = () => {
     const bio = profileData.bio;
 
     return (
-        <Container id="about_page" sx={{ padding: '50px 0' }}>
+        <Container id="about" sx={{ padding: '50px 0' }}>
             <Box sx={{ marginTop: "30px", marginBottom: '80px' }}>
                 <About bio={bio} />
             </Box>

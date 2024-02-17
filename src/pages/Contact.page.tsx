@@ -12,7 +12,7 @@ const ContactPage = () => {
     };
 
     return (
-        <Container sx={{padding: '50px 0' }}>
+        <Container id="contact" sx={{padding: '50px 0' }}>
             <PageHeader
                 title="Contact Me"
                 subtitle1="I Want To Hear From You"

@@ -8,11 +8,11 @@ import AboutPage from './pages/About.page';
 import PortfolioPage from './pages/Portfolio.page';
 
 const menuItems = [
-  { name: 'Home', url: '/home' },
-  { name: 'About', url: '/about' },
-  { name: 'Portfolio', url: '/portfolio' },
-  { name: 'Resume', url: '/resume' },
-  { name: 'Contact', url: '/coontact' },
+  { name: 'Home', url: '#home' },
+  { name: 'About', url: '#about' },
+  { name: 'Portfolio', url: '#portfolio' },
+  { name: 'Resume', url: '#resume' },
+  { name: 'Contact', url: '#coontact' },
 ];
 
 function App() {
