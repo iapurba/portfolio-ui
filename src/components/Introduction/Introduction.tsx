@@ -4,7 +4,7 @@ import TypingText from "../../common/TypingText/TypingText";
 import { useEffect, useState } from "react";
 import CustomButton from "../../common/CustomButton/CustomButton";
 import SocialLinkIcon from "../../common/SocialLinkIcon/SocialLinkIcon";
-import avatarImage from "../../assets/souravdinda.png";
+import avatarImage from "../../assets/souravdinda1.png";
 import { socialLinks } from "../../data/socialLinks";
 import { BioText, LinksContainer, NameText } from "./Introduction.styles";
 
@@ -62,8 +62,8 @@ const Introduction: React.FC<IntroductionProps> = ({
                         src={avatarImage}
                         alt="Avatar"
                         style={{
-                            width: '300px',
-                            height: 'auto'
+                            width: 'auto',
+                            height: '450px'
                         }}
                     />
                 </Grid>
