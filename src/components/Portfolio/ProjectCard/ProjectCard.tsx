@@ -8,16 +8,17 @@ import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import IconTextButton from '../../../common/IconTextButton/IconTextButton';
 import { ProjectCardWrapper } from './ProjectCard.styles';
 import loadBalancer from "../../../assets/loadbalancer.png";
+import { formatToEllipsisText } from '../../../utils/textFormatUtils';
 
 interface ProjectCardProps {
-    name: string;
+    title: string;
     details: string;
     viewLiveUrl?: string;
     viewSourceCodeUrl?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-    name,
+    title,
     details,
     viewLiveUrl,
     viewSourceCodeUrl,
@@ -33,10 +34,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {name}
+                    {formatToEllipsisText(title, 57)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {details}
+                    {formatToEllipsisText(details, 210)}
                 </Typography>
             </CardContent>
             <CardActions>
