@@ -1,21 +1,23 @@
 import CutomButtonWrapper from "./CustomButton.styles";
 
 interface CustomButtonProps {
-    variant?: 'primary' | 'secondary';
+    variant?: "contained" | "outlined";
+    color?: "green" | "orange" | "purple";
     label: string;
-    onClick?: () => void
+    onClick?: () => void;
 }
 
 const FilterButton = ({
-    variant = 'primary',
+    variant = "contained",
+    color = "orange",
     label,
     onClick,
     ...props
 }: CustomButtonProps) => {
     return (
         <CutomButtonWrapper
-            className={`btn btn-custom 
-            ${variant === 'primary' ? 'primary' : 'secondary'}`}
+            className={`btn btn-custom ${color}
+            ${variant === "contained" ? "contained" : "outlined"}`}
             onClick={onClick}
             {...props}
         >

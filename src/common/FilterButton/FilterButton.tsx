@@ -6,14 +6,14 @@ interface FilterButtonProps extends FilterMenuButtonProps {
 
 const FilterButton = ({
     label,
-    isActive = false,
+    active = false,
     onClick,
     ...props
 }: FilterButtonProps) => {
     return (
         <RounderFilterButtonWrapper
             className='btn btn-filter btn-filter-rounder'
-            isActive={isActive}
+            active={active}
             {...props}
             onClick={onClick}
         >
