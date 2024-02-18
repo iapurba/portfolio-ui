@@ -1,10 +1,10 @@
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import CorporateFareRoundedIcon from '@mui/icons-material/CorporateFareRounded';
-import WorkspacePremiumRoundedIcon from '@mui/icons-material/WorkspacePremiumRounded';
-import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import CorporateFareRoundedIcon from "@mui/icons-material/CorporateFareRounded";
+import WorkspacePremiumRoundedIcon from "@mui/icons-material/WorkspacePremiumRounded";
+import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
 export const ResumeContentWrapper = styled(Box)({
     display: "flex",
@@ -21,7 +21,7 @@ export const ResumeContentHeaderWrapper = styled(Box)({
     alignItems: "center",
     borderBottom: "1px solid #d6dbe5",
     padding: "0px 8px 16px",
-})
+});
 
 export const CustomHeader = styled(Typography)({
     fontSize: "24px",
@@ -30,19 +30,14 @@ export const CustomHeader = styled(Typography)({
 
 export const CustomBox = styled(Box)({
     padding: "6px 16px",
-    margin: "16px 0px"
+    margin: "16px 0px",
 });
 
-export const CustomChildBox = styled(Box)(
-    ({ className }) => ({
-        paddingTop: className?.includes('first')
-            ? '0' : '16px',
-        paddingBottom: className?.includes('last')
-            ? '0' : '16px',
-        borderBottom: className?.includes('last')
-            ? 'none' : '1px solid #d6dbe5',
-    }));
-
+export const CustomChildBox = styled(Box)(({ className }) => ({
+    paddingTop: className?.includes("first") ? "0" : "16px",
+    paddingBottom: className?.includes("last") ? "0" : "16px",
+    borderBottom: className?.includes("last") ? "none" : "1px solid #d6dbe5",
+}));
 
 export const OfficeIcon = styled(CorporateFareRoundedIcon)({
     "&.MuiSvgIcon-root": {
@@ -75,5 +70,4 @@ export const SkillIcon = styled(SettingsOutlinedIcon)({
         fontSize: "28px",
     },
 });
-
 
