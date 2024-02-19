@@ -88,8 +88,8 @@ const Introduction: React.FC<IntroductionProps> = ({
                         src={avatarImage}
                         alt="Avatar"
                         style={{
-                            width: 'auto',
-                            maxHeight: '450px'
+                            width: "auto",
+                            height: "300px"
                         }}
                     />
                 </Grid>

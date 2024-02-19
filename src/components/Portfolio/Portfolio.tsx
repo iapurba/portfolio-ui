@@ -35,7 +35,13 @@ const Portfolio: React.FC<PortFolioProps> = ({
 
     return (
         <div className='portfolio-details-container'>
-            <Toolbar sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+            <Toolbar sx={{
+                display: "flex",
+                flexDirection: { md: "row" },
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: "10px",
+            }}>
                 {tabs.map((tab: TabItem, index: number) => (
                     <FilterButton
                         key={index}

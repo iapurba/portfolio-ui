@@ -14,7 +14,6 @@ const RounderFilterButtonWrapper = styled(Button)<FilterMenuButtonProps>(
         border: active ? '1px solid #8067F0' : '1px solid #ECE8FD',
         fontSize: '16px',
         fontWeight: '520',
-        marginLeft: '12px',
         textTransform: 'initial',
         backgroundColor: active ? '#8067F0' : 'transparent',
         '&:hover': {

@@ -8,7 +8,6 @@ const profileData: ProfileType = {
         "AWS Certified Solution Architect Associate",
         "GitLab Certified Associate",
         "Redhat Certified Engineer in Ansible",
-        "Redhat Certified Specialist in Container & Kubernetes",
     ],
     intro:
         `Goal-oriented & results-driven professional targeting 

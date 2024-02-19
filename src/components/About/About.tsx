@@ -12,18 +12,36 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ bio }) => {
     return (
         <Grid container>
-            <Grid item xs={12} sm={12} md={6}>
+            <Grid item xs={12} sm={12} md={6}
+                container
+                justifyContent="center"
+            >
                 <img src={avatarImage}
                     alt="Avatar"
-                    style={{ width: 'auto', maxHeight: '500px' }}
+                    style={{
+                        margin: "auto",
+                        height: "auto",
+                        maxWidth: "300px",
+                    }}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-                <Box>
+                <Box sx={{
+                    textAlign: {
+                        xs: "center",
+                        sm: "left",
+                    },
+                }}
+                >
                     <PageHeader
                         title="About Me"
                         subtitle1="An Engineer With Passion"
-                        sx={{ textAlign: "left" }}
+                        sx={{
+                            textAlign: {
+                                xs: "center",
+                                sm: "left",
+                            }
+                        }}
                     />
                     <Typography dangerouslySetInnerHTML={{ __html: bio }} />
                     <Box display={"flex"} flexDirection={"row"} pt={2}>
