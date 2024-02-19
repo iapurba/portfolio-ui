@@ -13,6 +13,10 @@ export const ProjectDetailBoxWrapper = styled(Box)`
     border: 1px solid #d6dbe5;
     border-radius: 12px;
     position: relative;
+
+    @media (max-width: 600px) {  /* For xs screens and below */
+        width: 100%;
+    }
 `;
 
 export const ProjectDetailContent = styled(CardContent)`
