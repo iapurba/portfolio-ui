@@ -1,11 +1,9 @@
-import Container from "@mui/material/Container"
-import PageHeader from "../common/PageHeader/PageHeader";
-import Box from "@mui/material/Box";
 import Portfolio from "../components/Portfolio/Portfolio";
 import { projectData } from "../data/project.data";
 import { TabItem } from "../types/Project.type";
+import PageBuilder from "../common/PageBuilder/PageBuilder";
 
-const PortfolioPage = () => {
+const PortfolioPage: React.FC = () => {
 
     const tabs: TabItem[] = [
         { label: 'All', value: 'all' },
@@ -18,21 +16,21 @@ const PortfolioPage = () => {
     ];
     const projects = projectData;
 
-    return (
-        <Container sx={{ padding: '50px 0' }} id="portfolio">
-            <PageHeader
-                title="Portfolio"
-                subtitle1="My Amaazing Works"
-            />
-            <Box sx={{ marginTop: "30px", marginBottom: '80px' }}>
-                <Portfolio
-                    tabs={tabs}
-                    projects={projects}
-                />
-            </Box>
+    const portfolioComponent = (
+        <Portfolio
+            tabs={tabs}
+            projects={projects}
+        />
+    );
 
-        </Container>
-    )
+    return (
+        <PageBuilder
+            id="portfolio"
+            title="Portfolio"
+            subtitle1="My Amaazing Works"
+            children={portfolioComponent}
+        />
+    );
 };
 
 export default PortfolioPage;

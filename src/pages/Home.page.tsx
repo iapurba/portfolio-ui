@@ -1,28 +1,37 @@
-import Container from "@mui/material/Container"
 import Introduction from "../components/Introduction/Introduction";
-import Box from "@mui/material/Box";
 import profileData from "../data/profile.data";
+import BG from "../assets/bg2.jpg";
+import PageBuilder from "../common/PageBuilder/PageBuilder";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
+
+    const introComponent = (
+        <Introduction
+            name={profileData.name}
+            jobs={profileData.jobs}
+            intro={profileData.intro}
+        />
+    );
+
+    const customStyles = {
+        height: '100vh',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundImage: `url(${BG})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        maring: 'auto'
+    };
+
     return (
-        <Box
+        <PageBuilder
             id="home"
-            sx={{
-                backgroundColor: '#F7F9F9',
-                height: '100vh',
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-            }}>
-            <Container sx={{ margin: 'auto', }}>
-                <Introduction
-                    name={profileData.name}
-                    jobs={profileData.jobs}
-                    intro={profileData.intro}
-                />
-            </Container>
-        </Box>
-    )
+            className="home-page"
+            sx={customStyles}
+            children={introComponent}
+        />
+    );
 };
 
 export default HomePage;

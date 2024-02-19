@@ -1,18 +1,18 @@
-import Container from "@mui/material/Container"
-import Box from "@mui/material/Box";
 import About from "../components/About/About";
 import profileData from "../data/profile.data";
+import PageBuilder from "../common/PageBuilder/PageBuilder";
 
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
+
     const bio = profileData.bio;
+    const aboutComponent = <About bio={bio} />;
 
     return (
-        <Container id="about" sx={{ padding: '50px 0' }}>
-            <Box sx={{ marginTop: "30px", marginBottom: '80px' }}>
-                <About bio={bio} />
-            </Box>
-        </Container>
-    )
+        <PageBuilder
+            id="about"
+            children={aboutComponent}
+        />
+    );
 };
 
 export default AboutPage;

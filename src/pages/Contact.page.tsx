@@ -1,31 +1,29 @@
-import Container from "@mui/material/Container"
-import PageHeader from "../common/PageHeader/PageHeader";
-import Box from "@mui/material/Box";
 import Contact from "../components/Contact/Contact";
 import profileData from "../data/profile.data";
+import PageBuilder from "../common/PageBuilder/PageBuilder";
 
-const ContactPage = () => {
+const ContactPage: React.FC = () => {
     const ContactDetails = profileData.contactDetails;
 
     const submitContactForm = () => {
-
+        console.log("submit contact form");
     };
 
-    return (
-        <Container id="contact" sx={{padding: '50px 0' }}>
-            <PageHeader
-                title="Contact Me"
-                subtitle1="I Want To Hear From You"
-            />
-            <Box sx={{ marginTop: "30px", marginBottom: '80px' }}>
-                <Contact
-                    contactDetails={ContactDetails}
-                    onSubmit={submitContactForm}
-                 />
-            </Box>
+    const contactComponent = (
+        <Contact
+            contactDetails={ContactDetails}
+            onSubmit={submitContactForm}
+        />
+    );
 
-        </Container>
-    )
+    return (
+        <PageBuilder
+            id="contact"
+            title="Contact Me"
+            subtitle1="I Want To Hear From You"
+            children={contactComponent}
+        />
+    );
 };
 
 export default ContactPage;
