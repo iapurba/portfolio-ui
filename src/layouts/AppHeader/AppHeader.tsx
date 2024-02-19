@@ -38,13 +38,8 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         <Box>
             <CustomAppBar
                 className='app-header'
-                sx={{
-                    backgroundColor: isScrolled
-                        ? "#FFFFFF" : "transparent",
-                    transition: "background-color 0.5s ease",
-                    boxShadow: isScrolled ?
-                        "rgba(17, 17, 26, 0.1) 0px 1px 0px": "none",
-                }}>
+                isScrolled={isScrolled}
+            >
                 <AppHeaderContentWrapper>
                     <Logo name="SD" url="#" />
                     <Box className="nav-menu-container"

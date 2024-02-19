@@ -4,15 +4,31 @@ import Link from "@mui/material/Link";
 import { styled } from "@mui/material/styles";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+interface CustomAppBarProps {
+    isScrolled?: boolean;
+}
 
-export const CustomAppBar = styled(AppBar)({
-    color: "#FFFFFF",
-    position: "fixed",
-    boxShadow: "none",
-    backgroundColor: 'transparent',
-    padding: "12px 0px",
-    zIndex: 9999,
-});
+export const CustomAppBar = styled(AppBar)<CustomAppBarProps>(
+    ({ theme, isScrolled }) => ({
+        color: "#FFFFFF",
+        position: "fixed",
+        // boxShadow: "none",
+        // backgroundColor: 'transparent',
+        padding: "6px 0px",
+        [theme.breakpoints.up('xs')]: {
+            padding: '6px 0',
+        },
+        [theme.breakpoints.up('sm')]: {
+            padding: '12px 0',
+        },
+        zIndex: 9999,
+        backgroundColor: isScrolled
+            ? "#FFFFFF" : "transparent",
+        transition: "background-color 0.5s ease",
+        boxShadow: isScrolled ?
+            "rgba(17, 17, 26, 0.1) 0px 1px 0px" : "none",
+    })
+);
 
 export const AppHeaderContentWrapper = styled(Container)({
     display: "flex",
