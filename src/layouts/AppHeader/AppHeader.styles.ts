@@ -11,6 +11,7 @@ export const CustomAppBar = styled(AppBar)({
     boxShadow: "none",
     backgroundColor: 'transparent',
     padding: "12px 0px",
+    zIndex: 9999,
 });
 
 export const AppHeaderContentWrapper = styled(Container)({

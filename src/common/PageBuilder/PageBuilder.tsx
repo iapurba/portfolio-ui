@@ -21,7 +21,7 @@ const PageBuilder: React.FC<PageBuilderProps> = ({
     sx
 }) => {
     return (
-        <Box id={id} sx={{ padding: "50px 0", ...sx }}>
+        <Box id={id} sx={{ padding: "30px 0", ...sx }}>
             <Container
                 className={className
                     ? className : `${id}-container`}

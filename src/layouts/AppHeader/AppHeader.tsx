@@ -10,7 +10,6 @@ import {
 } from './AppHeader.styles';
 import Logo from '../../common/Logo/Logo';
 import CustomButton from '../../common/CustomButton/CustomButton';
-import { useEffect, useState } from 'react';
 import { Divider } from '@mui/material';
 
 interface AppHeaderProps {
@@ -18,73 +17,19 @@ interface AppHeaderProps {
         name: string;
         url: string;
     }[];
-    children: React.ReactNode;
+    isScrolled: boolean;
 }
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
     navItems,
-    children,
+    isScrolled,
 }) => {
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollTop = window.pageYOffset ||
-                document.documentElement.scrollTop;
-            setIsScrolled(scrollTop > 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
-
-    const drawer = (
-        <div>
-            {/* <Box display={"flex"} justifyContent={"space-between"}>
-                <Logo name="SD" url="#" />
-                <IconButton
-                    color="primary"
-                    aria-label="open drawer"
-                    edge="end"
-                    onClick={handleDrawerToggle}
-                >
-                    <CloseIcon />
-                </IconButton>
-            </Box> */}
-            <List>
-                {navItems.map((item, i) => (
-                    <ListItem key={item.name}>
-                        <MenuLink
-                            className="menu-item"
-                            key={i}
-                            href={item.url}
-                            underline="none"
-                            sx={{ textAlign: "center" }}
-                            onClick={handleDrawerToggle}
-                        >
-                            {item.name}
-                        </MenuLink>
-                    </ListItem>
-                ))}
-                <ListItem key={navItems.length}>
-                    <CustomButton
-                        variant="outlined"
-                        label="Download CV"
-                        onClick={() => ({})}
-                    />
-                </ListItem>
-            </List>
-        </div>
-    );
 
     const container = window !== undefined
         ? () => window.document.body : undefined;
@@ -93,10 +38,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         <Box>
             <CustomAppBar
                 className='app-header'
-                onScroll={() => setIsScrolled(true)}
                 sx={{
                     backgroundColor: isScrolled
-                        ? "#FFFFFF" : "transparent"
+                        ? "#FFFFFF" : "transparent",
+                    transition: "background-color 0.5s ease",
+                    boxShadow: isScrolled ?
+                        "rgba(17, 17, 26, 0.1) 0px 1px 0px": "none",
                 }}>
                 <AppHeaderContentWrapper>
                     <Logo name="SD" url="#" />
@@ -110,6 +57,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                                 key={index}
                                 href={item.url}
                                 underline="none"
+                                onClick={() => {
+                                    console.log(item.name);
+                                    console.log(isScrolled);
+                                }}
                             >
                                 {item.name}
                             </MenuLink>
@@ -165,12 +116,31 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                         </Box>
                     </AppHeaderContentWrapper>
                     <Divider />
-                    {drawer}
+                    <List>
+                        {navItems.map((item, i) => (
+                            <ListItem key={item.name}>
+                                <MenuLink
+                                    className="menu-item"
+                                    key={i}
+                                    href={item.url}
+                                    underline="none"
+                                    sx={{ textAlign: "center" }}
+                                    onClick={handleDrawerToggle}
+                                >
+                                    {item.name}
+                                </MenuLink>
+                            </ListItem>
+                        ))}
+                        <ListItem key={navItems.length}>
+                            <CustomButton
+                                variant="outlined"
+                                label="Download CV"
+                                onClick={() => ({})}
+                            />
+                        </ListItem>
+                    </List>
                 </Drawer>
             </nav>
-            <Box margin={"auto"} paddingTop={`${isScrolled ? '72px' : '0'}`}>
-                {children}
-            </Box>
         </Box>
     );
 }
