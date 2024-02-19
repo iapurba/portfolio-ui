@@ -7,7 +7,6 @@ const useStyles = {
     whiteSpace: "nowrap",
     borderRight: "2px solid #000",
     color: "#1CBE59",
-    fontSize: "24px",
     fontWeing: "600",
     width: "fit-content",
     "@keyframes typingEffect": {
@@ -18,9 +17,10 @@ const useStyles = {
 
 interface TypingTextProps {
     text: string;
+    sx?: Object;
 }
 
-const TypingText: React.FC<TypingTextProps> = ({ text }) => {
+const TypingText: React.FC<TypingTextProps> = ({ text, sx }) => {
     const [displayText, setDisplayText] = useState("");
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const TypingText: React.FC<TypingTextProps> = ({ text }) => {
     }, [text]);
 
     return (
-        <Typography>{``}<span style={useStyles}>{displayText}</span></Typography>
+        <Typography sx={sx}>{``}<span style={useStyles}>{displayText}</span></Typography>
     );
 };
 

@@ -6,7 +6,7 @@ import CustomButton from "../../common/CustomButton/CustomButton";
 import SocialLinkIcon from "../../common/SocialLinkIcon/SocialLinkIcon";
 import avatarImage from "../../assets/souravdinda1.png";
 import { socialLinks } from "../../data/socialLinks";
-import { BioText, LinksContainer, NameText } from "./Introduction.styles";
+import { BioText, LinksContainer } from "./Introduction.styles";
 
 
 interface IntroductionProps {
@@ -33,16 +33,39 @@ const Introduction: React.FC<IntroductionProps> = ({
         <div id="introduction">
             <Grid container>
                 <Grid item sm={12} md={6}>
-                    <Box sx={{ textAlign: 'left' }}>
+                    <Box sx={{
+                        textAlign: {
+                            xs: 'center',
+                            sm: 'left',
+                            md: 'left',
+                        },
+                        maxWidth: "100%",
+                    }}>
                         <Typography sx={{
                             color: '#F75023',
-                            fontSize: '25px'
+                            fontSize: { xs: '21px', sm: '25px' }
                         }}>Hello, I'm</Typography>
-                        <NameText>{name}</NameText>
-                        <TypingText text={jobs[currentIndex]} />
+
+                        <Typography sx={{
+                            fontSize: { xs: '42px', sm: '60px' },
+                            fontWeight: '540'
+                        }}>
+                            {name}
+                        </Typography>
+
+                        <TypingText sx={{
+                            fontSize: {
+                                xs: '18px',
+                                sm: '24px',
+                            }
+                        }} text={jobs[currentIndex]} />
+
                         <BioText>{intro}</BioText>
+
                         <LinksContainer>
-                            <CustomButton label='About Me' />
+                            <CustomButton
+                                label='About Me'
+                            />
                             <Box sx={{ marginLeft: '16px' }}>
                                 {socialLinks.map((item, index) => (
                                     <SocialLinkIcon
@@ -57,13 +80,16 @@ const Introduction: React.FC<IntroductionProps> = ({
                         </LinksContainer>
                     </Box>
                 </Grid>
-                <Grid item sm={12} md={6} container justifyContent="center">
+                <Grid item sm={12} md={6}
+                    container
+                    justifyContent="center"
+                >
                     <img
                         src={avatarImage}
                         alt="Avatar"
                         style={{
                             width: 'auto',
-                            height: '450px'
+                            maxHeight: '450px'
                         }}
                     />
                 </Grid>

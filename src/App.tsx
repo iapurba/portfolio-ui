@@ -6,7 +6,7 @@ import AppFooter from './layouts/AppFooter/AppFooter';
 import AboutPage from './pages/About.page';
 import PortfolioPage from './pages/Portfolio.page';
 
-const menuItems = [
+const navItems = [
   { name: 'Home', url: '#home' },
   { name: 'About', url: '#about' },
   { name: 'Resume', url: '#resume' },
@@ -14,16 +14,24 @@ const menuItems = [
   { name: 'Contact', url: '#contact' },
 ];
 
-function App() {
+const App: React.FC = () => {
+  const children = (
+    <>
+      <HomePage />
+      <AboutPage />
+      <ResumePage />
+      <PortfolioPage />
+      <ContactPage />
+      <AppFooter />
+    </>
+  );
+  
   return (
     <div className="App">
-      <AppHeader menuItems={menuItems} />
-      <HomePage/>
-      <AboutPage/>
-      <ResumePage/>
-      <PortfolioPage/>
-      <ContactPage/>
-      <AppFooter/>
+      <AppHeader
+        navItems={navItems}
+        children={children}
+      />
     </div>
   );
 }

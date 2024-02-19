@@ -1,26 +1,35 @@
 import Grid from "@mui/material/Grid";
 import SkillList from "./SkillList";
 import Box from "@mui/material/Box";
-import profileData from "../../data/profile.data";
 import WorkExperience from "./WorkExperience";
 import EducationHistory from "./Education";
 import Certifications from "./Certifications";
+import {
+    CertificationType,
+    EducationType,
+    TechnicalSkillType,
+    WorkExperienceType
+} from "../../types/Profile.type";
 
 interface ResumeProps {
-
+    workExperiences: WorkExperienceType[];
+    skills: TechnicalSkillType[];
+    educations: EducationType[];
+    certifications: CertificationType[];
 }
 
-const Resume: React.FC<ResumeProps> = () => {
-    const workExperience = profileData.workExperience;
-    const skills = profileData.technicalSkills;
-    const education = profileData.education;
-    const certifications = profileData.certifications;
+const Resume: React.FC<ResumeProps> = ({
+    workExperiences,
+    skills,
+    educations,
+    certifications,
+}) => {
     return (
         <Box>
             <Grid container>
                 <Grid item sm={12} md={6} p={1}>
                     <Box className="work-experience-box">
-                        <WorkExperience experiences={workExperience} />
+                        <WorkExperience experiences={workExperiences} />
                     </Box>
                     <Box className="certifications-box" pt={2}>
                         <Certifications certList={certifications} />
@@ -31,7 +40,7 @@ const Resume: React.FC<ResumeProps> = () => {
                         <SkillList skills={skills} />
                     </Box>
                     <Box className="education-history-box" pt={2}>
-                        <EducationHistory educationHistory={education} />
+                        <EducationHistory educationHistory={educations} />
                     </Box>
                 </Grid>
             </Grid>

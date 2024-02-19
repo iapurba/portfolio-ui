@@ -8,11 +8,6 @@ export const IntroductionWrapper = styled(Container)({
     padding: "100px 0px",
 });
 
-export const NameText = styled(Typography)({
-    fontSize: "60px",
-    fontWeight: "540",
-});
-
 export const BioText = styled(Typography)({
     fontSize: "16px",
     marginTop: "24px",

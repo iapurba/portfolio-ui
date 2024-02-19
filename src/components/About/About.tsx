@@ -15,7 +15,7 @@ const About: React.FC<AboutProps> = ({ bio }) => {
             <Grid item xs={12} sm={12} md={6}>
                 <img src={avatarImage}
                     alt="Avatar"
-                    style={{ width: 'auto', height: '500px' }}
+                    style={{ width: 'auto', maxHeight: '500px' }}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>

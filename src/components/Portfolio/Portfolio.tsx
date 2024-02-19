@@ -38,6 +38,7 @@ const Portfolio: React.FC<PortFolioProps> = ({
             <Toolbar sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
                 {tabs.map((tab: TabItem, index: number) => (
                     <FilterButton
+                        key={index}
                         label={tab.label}
                         active={selectedTab === tab.value ? true : false}
                         onClick={() => (filterProjectByTag(tab.value))}
@@ -46,9 +47,8 @@ const Portfolio: React.FC<PortFolioProps> = ({
             </Toolbar>
             <Grid container justifyContent={"center"}>
                 {filteredProjects.map((project, i) => (
-                    <Grid item xs={12} sm={12} md={4} p={1}>
+                    <Grid item xs={12} sm={12} md={4} p={1} key={i}>
                         <ProjectCard
-                            key={i}
                             title={project?.title}
                             details={project?.details}
                         />
