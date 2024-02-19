@@ -5,7 +5,7 @@ export const projectData: ProjectType[] = [
         title: `Automated Flask App Deployment on ECS: 
                 Terraform-backend, CI/CD Pipeline`,
         tags: ['aws', 'cicd'],
-        details: `The project embarks on a journey of automating the 
+        details: `<p>The project embarks on a journey of automating the 
         deployment of a Flask application on Amazon ECS by seamlessly 
         integrating Terraform for infrastructure provisioning and AWS 
         CodePipeline for continuous integration and deployment (CI/CD). 
@@ -31,13 +31,13 @@ export const projectData: ProjectType[] = [
         This setup not only enhances deployment efficiency but also ensures 
         consistency and fosters collaboration across teams, enabling rapid 
         and reliable deployment iterations of the Flask application on 
-        Amazon ECS.`
+        Amazon ECS.</p>`
     },
     {
         title: `Serverless Infrastructure Automation: Streamlined CI/CD 
         with Terraform, AWS CodePipeline, and Lambda`,
         tags: ['aws', 'cicd'],
-        details: `The project aims to establish a comprehensive infrastructure 
+        details: `<p>The project aims to establish a comprehensive infrastructure 
         automation solution utilizing Terraform, AWS CodePipeline, AWS Lambda, 
         API Gateway, and DynamoDB for efficient development and deployment of 
         serverless applications. Leveraging Terraform, infrastructure 
@@ -61,13 +61,13 @@ export const projectData: ProjectType[] = [
         combines infrastructure as code principles with serverless technologies 
         to deliver scalable, reliable, and efficient applications, setting the 
         stage for modern DevOps practices and facilitating the development of 
-        innovative solutions with minimal operational overhead.`
+        innovative solutions with minimal operational overhead.</p>`
     },
     {
         title: `End-to-End CI/CD Pipeline: GitHub, Maven, Jenkins, Artifactory, 
         SonarQube, Docker, Ansible, and Tomcat Integration`,
         tags: ['cicd'],
-        details: `The CI/CD pipeline incorporates a suite of essential tools to 
+        details: `<p>The CI/CD pipeline incorporates a suite of essential tools to 
         streamline the software development lifecycle. GitHub serves as the 
         source code management platform, providing version control and 
         collaboration features. Maven is employed as the build tool, 
@@ -87,16 +87,17 @@ export const projectData: ProjectType[] = [
         the software development lifecycle, from version control and build to 
         deployment and application hosting. The seamless integration of these 
         tools enables teams to accelerate development cycles, maintain code 
-        quality, and deliver reliable software solutions efficiently.`,
+        quality, and deliver reliable software solutions efficiently.</p>`,
     },
     {
         title: "Intregated Load balancer with Auto scalling and Route53 using Terraform module",
         tags: ['aws'],
-        details: "Intregated Load balancer with Auto scalling and Route53 using Terraform module with best practices"
+        details: `<p>Intregated Load balancer with Auto scalling and Route53 
+        using Terraform module with best practices</p>`
     },
     {
         title: "Intregated Load balancer with Auto scalling and Route53 using Terraform module",
         tags: ['aws'],
-        details: "Intregated Load balancer with Auto scalling and Route53 using Terraform module with best practices"
+        details: `<p>Intregated Load balancer with Auto scalling and Route53 using Terraform module with best practices</p>`
     },
 ]

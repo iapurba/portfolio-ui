@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/system';
 
 export const ProjectCardWrapper = styled(Card)({
     boxShadow: 'none',
@@ -25,10 +25,21 @@ export const ProjectCardFooter = styled(Box)({
     fontFamily: 'Inter, sans-serif',
 });
 
-export const PrimaryEventCardText = styled(Typography)(({ theme }) => ({
-    fontSize: '14px',
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: 'bold',
-    color: '#45474D',
-    margin: theme.spacing(0, 1),
-}));
+export const ProjectTitleText = styled(Typography)`
+    font-size: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
+export const ProjectDetailsText = styled(Typography)`
+    font-size: 14px;
+    color: #00000099;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;

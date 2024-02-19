@@ -2,19 +2,18 @@ import * as React from 'react';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import IconTextButton from '../../../common/IconTextButton/IconTextButton';
-import { ProjectCardWrapper } from './ProjectCard.styles';
+import { ProjectTitleText, ProjectCardWrapper, ProjectDetailsText } from './ProjectCard.styles';
 import loadBalancer from "../../../assets/loadbalancer.png";
-import { formatToEllipsisText } from '../../../utils/textFormatUtils';
 
 interface ProjectCardProps {
     title: string;
     details: string;
     viewLiveUrl?: string;
     viewSourceCodeUrl?: string;
+    onClick: () => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -22,9 +21,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     details,
     viewLiveUrl,
     viewSourceCodeUrl,
+    onClick
 }) => {
     return (
-        <ProjectCardWrapper>
+        <ProjectCardWrapper onClick={onClick}>
             <CardMedia
                 component="img"
                 alt="green iguana"
@@ -33,12 +33,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 image={loadBalancer}
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {formatToEllipsisText(title, 57)}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {formatToEllipsisText(details, 210)}
-                </Typography>
+                <ProjectTitleText>{title}</ProjectTitleText>
+                <ProjectDetailsText dangerouslySetInnerHTML={{ __html: details }} />
             </CardContent>
             <CardActions>
                 <IconTextButton
