@@ -10,6 +10,7 @@ export const CustomAppBar = styled(AppBar)({
     position: "fixed",
     boxShadow: "none",
     backgroundColor: 'transparent',
+    padding: "12px 0px",
 });
 
 export const AppHeaderContentWrapper = styled(Container)({

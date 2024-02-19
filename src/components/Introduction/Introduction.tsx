@@ -62,7 +62,7 @@ const Introduction: React.FC<IntroductionProps> = ({
 
                         <BioText>{intro}</BioText>
 
-                        <LinksContainer>
+                        <LinksContainer justifyContent={{ xs: "center", md: "flex-start" }}>
                             <CustomButton
                                 label='About Me'
                             />

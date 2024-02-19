@@ -5,7 +5,7 @@ const profileData: ProfileType = {
     jobs: [
         "DevOps Engineer",
         "AWS Certified Develover Associate",
-        "AWS Certified Solution Architect Associate",
+        "AWS Certified Solution Architect",
         "GitLab Certified Associate",
         "Redhat Certified Engineer in Ansible",
     ],

@@ -11,6 +11,7 @@ import {
 import Logo from '../../common/Logo/Logo';
 import CustomButton from '../../common/CustomButton/CustomButton';
 import { useEffect, useState } from 'react';
+import { Divider } from '@mui/material';
 
 interface AppHeaderProps {
     navItems: {
@@ -48,14 +49,17 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 
     const drawer = (
         <div>
-            <IconButton
-                color="primary"
-                aria-label="open drawer"
-                edge="end"
-                onClick={handleDrawerToggle}
-            >
-                <CloseIcon />
-            </IconButton>
+            {/* <Box display={"flex"} justifyContent={"space-between"}>
+                <Logo name="SD" url="#" />
+                <IconButton
+                    color="primary"
+                    aria-label="open drawer"
+                    edge="end"
+                    onClick={handleDrawerToggle}
+                >
+                    <CloseIcon />
+                </IconButton>
+            </Box> */}
             <List>
                 {navItems.map((item, i) => (
                     <ListItem key={item.name}>
@@ -71,6 +75,13 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                         </MenuLink>
                     </ListItem>
                 ))}
+                <ListItem key={navItems.length}>
+                    <CustomButton
+                        variant="outlined"
+                        label="Download CV"
+                        onClick={() => ({})}
+                    />
+                </ListItem>
             </List>
         </div>
     );
@@ -79,7 +90,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         ? () => window.document.body : undefined;
 
     return (
-        <Box >
+        <Box>
             <CustomAppBar
                 className='app-header'
                 onScroll={() => setIsScrolled(true)}
@@ -87,43 +98,41 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                     backgroundColor: isScrolled
                         ? "#FFFFFF" : "transparent"
                 }}>
-                {/* <Toolbar sx={{padding: "0px 0px"}}> */}
-                    <AppHeaderContentWrapper>
-                        <Logo name="SD" url="#" />
-                        <Box className="nav-menu-container"
-                            sx={{
-                                display: { xs: 'none', sm: 'block' }
-                            }}>
-                            {navItems.map((item, index) => (
-                                <MenuLink
-                                    className="menu-item"
-                                    key={index}
-                                    href={item.url}
-                                    underline="none"
-                                >
-                                    {item.name}
-                                </MenuLink>
-                            ))}
-                            <CustomButton
-                                variant="outlined"
-                                label="Download CV"
-                                onClick={() => ({})}
-                            />
-                        </Box>
-                        <Box sx={{
-                            display: { xs: 'block', sm: 'none' }
+                <AppHeaderContentWrapper>
+                    <Logo name="SD" url="#" />
+                    <Box className="nav-menu-container"
+                        sx={{
+                            display: { xs: 'none', sm: 'block' }
                         }}>
-                            <IconButton
-                                color="primary"
-                                aria-label="open drawer"
-                                edge="end"
-                                onClick={handleDrawerToggle}
+                        {navItems.map((item, index) => (
+                            <MenuLink
+                                className="menu-item"
+                                key={index}
+                                href={item.url}
+                                underline="none"
                             >
-                                <HamburgerIcon />
-                            </IconButton>
-                        </Box>
-                    </AppHeaderContentWrapper>
-                {/* </Toolbar> */}
+                                {item.name}
+                            </MenuLink>
+                        ))}
+                        <CustomButton
+                            variant="outlined"
+                            label="Download CV"
+                            onClick={() => ({})}
+                        />
+                    </Box>
+                    <Box sx={{
+                        display: { xs: 'block', sm: 'none' }
+                    }}>
+                        <IconButton
+                            color="primary"
+                            aria-label="open drawer"
+                            edge="end"
+                            onClick={handleDrawerToggle}
+                        >
+                            <HamburgerIcon />
+                        </IconButton>
+                    </Box>
+                </AppHeaderContentWrapper>
             </CustomAppBar>
             <nav>
                 <Drawer
@@ -140,6 +149,22 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                         '& .MuiDrawer-paper': { boxSizing: 'border-box' },
                     }}
                 >
+                    <AppHeaderContentWrapper sx={{ padding: "12px 16px" }}>
+                        <Logo name="SD" url="#" />
+                        <Box sx={{
+                            display: { xs: 'block', sm: 'none' }
+                        }}>
+                            <IconButton
+                                color="primary"
+                                aria-label="open drawer"
+                                edge="end"
+                                onClick={handleDrawerToggle}
+                            >
+                                <CloseIcon />
+                            </IconButton>
+                        </Box>
+                    </AppHeaderContentWrapper>
+                    <Divider />
                     {drawer}
                 </Drawer>
             </nav>

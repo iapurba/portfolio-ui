@@ -44,7 +44,12 @@ const About: React.FC<AboutProps> = ({ bio }) => {
                         }}
                     />
                     <Typography dangerouslySetInnerHTML={{ __html: bio }} />
-                    <Box display={"flex"} flexDirection={"row"} pt={2}>
+                    <Box
+                        pt={2}
+                        display={"flex"}
+                        flexDirection={"row"}
+                        justifyContent={{ xs: "center", md: "flex-start" }}
+                    >
                         <Box mr={1}>
                             <CustomButton
                                 label="Hire Me"

@@ -8,10 +8,10 @@ const PortfolioPage: React.FC = () => {
     const tabs: TabItem[] = [
         { label: 'All', value: 'all' },
         { label: 'AWS', value: 'aws' },
-        { label: 'Python', value: 'python' },
-        { label: 'Kubernetes', value: 'kubernetes' },
         { label: 'Terraform', value: 'terraform' },
+        { label: 'Python', value: 'python' },
         { label: 'CI/CD', value: 'cicd' },
+        { label: 'Kubernetes', value: 'kubernetes' },
         { label: 'Monitoring', value: 'monitoring' },
     ];
     const projects = projectData;
