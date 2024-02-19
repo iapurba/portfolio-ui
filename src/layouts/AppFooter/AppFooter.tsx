@@ -13,11 +13,21 @@ const AppFooter: React.FC = () => {
                 <Box sx={{
                     alignItems: 'center',
                     display: 'flex',
-                    flexDirection: 'row',
+                    flexDirection: {
+                        xs: 'column',
+                        sm: 'row',
+                        md: 'row',
+                    },
                     justifyContent: "space-between"
                 }}>
-                    <Typography>Developed with Love by <b>Apurba</b> <span>&copy;</span> {currentYear}</Typography>
-                    <Box sx={{ alignItems: 'center', display: 'flex', flexDirection: 'row' }}>
+                    <Typography>
+                        Developed with Love by <b>Apurba</b> <span>&copy;</span> {currentYear}
+                    </Typography>
+                    <Box sx={{
+                        alignItems: 'center',
+                        display: 'flex',
+                        flexDirection: 'row'
+                    }}>
                         {socialLinks.map((item, index) => (
                             <SocialLinkIcon
                                 variant="contained"
