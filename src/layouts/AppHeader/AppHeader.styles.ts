@@ -21,7 +21,7 @@ export const CustomAppBar = styled(AppBar)<CustomAppBarProps>(
         [theme.breakpoints.up('sm')]: {
             padding: '12px 0',
         },
-        zIndex: 9999,
+        zIndex: 1000,
         backgroundColor: isScrolled
             ? "#FFFFFF" : "transparent",
         transition: "background-color 0.5s ease",
@@ -36,7 +36,6 @@ export const AppHeaderContentWrapper = styled(Container)({
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
-    zIndex: 9999,
 });
 
 export const MenuLink = styled(Link)({

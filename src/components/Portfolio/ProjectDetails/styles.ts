@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
 
 export const ProjectDetailBoxWrapper = styled(Box)`
     background-color: #FFFFFF;
@@ -20,7 +21,13 @@ export const ProjectDetailBoxWrapper = styled(Box)`
 `;
 
 export const ProjectDetailContent = styled(CardContent)`
-    padding: 20px 20px 0;
+    padding: 24px 24px 0;
+`;
+
+export const ProjectDetailFooter = styled(CardActions)`
+    padding: 10px 24px 20px;
+    display: flex;
+    justify-content: space-between;
 `;
 
 export const CloseButton = styled('div')({
@@ -34,11 +41,14 @@ export const CloseIcon = styled(CloseRoundedIcon)({
     "&.MuiSvgIcon-root": {
         color: "#ffffff",
         fontSize: "30px",
-        padding: "3px",
+        padding: "6px",
         backgroundColor: "grey",
-        borderRadius: "12px",
+        borderRadius: "50px",
+        boxShadow: `rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 
+        0px -2px 6px 0px inset`,
     },
     "&.MuiSvgIcon-root: hover": {
-        backgroundColor: "red",
+        backgroundColor: "rgb(194, 0, 0)",
     },
 });

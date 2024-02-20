@@ -93,9 +93,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                     sx={{
                         display: { xs: 'block', sm: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box' },
+                        zIndex: 9999,
                     }}
                 >
-                    <AppHeaderContentWrapper sx={{ padding: "12px 16px" }}>
+                    <AppHeaderContentWrapper sx={{ padding: "6px 16px" }}>
                         <Logo name="SD" url="#" />
                         <Box sx={{
                             display: { xs: 'block', sm: 'none' }

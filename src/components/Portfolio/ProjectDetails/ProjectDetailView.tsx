@@ -1,11 +1,12 @@
 import React from 'react';
 import CardMedia from '@mui/material/CardMedia';
-import { Box, CardActions, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import IconTextButton from '../../../common/IconTextButton/IconTextButton';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import loadBalancer from "../../../assets/loadbalancer.png";
-import { CloseButton, CloseIcon, ProjectDetailBoxWrapper, ProjectDetailContent } from './styles';
+import { CloseButton, CloseIcon, ProjectDetailBoxWrapper, ProjectDetailContent, ProjectDetailFooter } from './styles';
 
 
 interface ProjectDetailViewProps {
@@ -47,16 +48,27 @@ const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     <Typography fontSize={"24px"}>{title}</Typography>
                     <Typography dangerouslySetInnerHTML={{ __html: details }} />
                 </ProjectDetailContent>
-                <CardActions>
-                    <IconTextButton
-                        startIcon={VisibilityRoundedIcon}
-                        label='View Live'
-                    />
-                    <IconTextButton
-                        startIcon={CodeRoundedIcon}
-                        label='Source Code'
-                    />
-                </CardActions>
+                <ProjectDetailFooter>
+                    <Box>
+                        {viewLiveUrl &&
+                            <IconTextButton
+                                startIcon={VisibilityRoundedIcon}
+                                label='Preview'
+                            />
+                        }
+                        <IconTextButton
+                            startIcon={CodeRoundedIcon}
+                            label='Source Code'
+                        />
+                    </Box>
+                    <Box>
+                        <IconTextButton
+                            startIcon={ChevronLeftIcon}
+                            label='Go Back'
+                            onClick={handleClose}
+                        />
+                    </Box>
+                </ProjectDetailFooter>
             </ProjectDetailBoxWrapper>
         </Box>
     );

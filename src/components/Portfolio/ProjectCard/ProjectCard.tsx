@@ -39,7 +39,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             <CardActions>
                 <IconTextButton
                     startIcon={VisibilityRoundedIcon}
-                    label='View Live'
+                    label='View Details'
                 />
                 <IconTextButton
                     startIcon={CodeRoundedIcon}
