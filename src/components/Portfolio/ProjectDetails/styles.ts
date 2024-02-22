@@ -1,40 +1,49 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/system';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/system";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
 
 export const ProjectDetailBoxWrapper = styled(Box)`
-    background-color: #FFFFFF;
-    width: 60%;
-    max-height: 90%;
-    overflow-y: auto;
-    margin: auto;
-    box-shadow: none;
-    border: 1px solid #d6dbe5;
-    border-radius: 12px;
-    position: relative;
+  background-color: #ffffff;
+  width: 60%;
+  max-height: 90%;
+  overflow-y: auto;
+  margin: auto;
+  box-shadow: none;
+  border: 1px solid #d6dbe5;
+  border-radius: 12px;
+  position: relative;
 
-    @media (max-width: 600px) {  /* For xs screens and below */
-        width: 100%;
-    }
+  @media (max-width: 600px) {
+    /* For xs screens and below */
+    width: 100%;
+  }
 `;
 
 export const ProjectDetailContent = styled(CardContent)`
     padding: 24px 24px 0;
+
+    @media (max-width: 600px) {  /* For xs screens and below */
+        width: padding: 16px 16px 0;
+    }
 `;
 
 export const ProjectDetailFooter = styled(CardActions)`
     padding: 10px 24px 20px;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 600px) {  /* For xs screens and below */
+        width: padding: 10px 16px 20px;
+    }
 `;
 
-export const CloseButton = styled('div')({
-    position: 'absolute',
-    top: '16px',
-    right: '16px',
-    cursor: 'pointer',
+export const CloseButton = styled("div")({
+    position: "absolute",
+    top: "16px",
+    right: "16px",
+    cursor: "pointer",
 });
 
 export const CloseIcon = styled(CloseRoundedIcon)({
