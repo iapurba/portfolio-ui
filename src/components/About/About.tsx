@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import CustomButton from "../../common/CustomButton/CustomButton";
 import PageHeader from "../../common/PageHeader/PageHeader";
 import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface AboutProps {
     bio: string;
@@ -11,6 +12,8 @@ interface AboutProps {
 }
 
 const About: React.FC<AboutProps> = ({ bio, onHireMeClick }) => {
+    const isMobile = useMediaQuery('(max-width:600px)');
+    
     return (
         <Grid container>
             <Grid item xs={12} sm={12} md={6}
@@ -21,8 +24,8 @@ const About: React.FC<AboutProps> = ({ bio, onHireMeClick }) => {
                     alt="Avatar"
                     style={{
                         margin: "auto",
-                        height: "auto",
-                        maxWidth: "300px",
+                        height: isMobile? "200px": "350px",
+                        marginBottom: isMobile ? '50px' : '0',
                     }}
                 />
             </Grid>

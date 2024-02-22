@@ -7,6 +7,11 @@ import { socialLinks } from "../../data/socialLinks";
 const AppFooter: React.FC = () => {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
+
+    const navigateToLinkedInHandle = () => {
+        window.open("https://www.linkedin.com/in/iapurba/", "_blank")
+    };
+
     return (
         <Box sx={{ backgroundColor: '#F7F9F9', }}>
             <Container sx={{ padding: "60px 0" }}>
@@ -21,7 +26,11 @@ const AppFooter: React.FC = () => {
                     justifyContent: "space-between"
                 }}>
                     <Typography>
-                        Developed with Love by <b>Apurba</b> <span>&copy;</span> {currentYear}
+                        Developed with Love by <b style={{
+                            cursor: "pointer"
+                        }}
+                            onClick={navigateToLinkedInHandle}
+                        >Apurba</b> &copy; {currentYear}
                     </Typography>
                     <Box sx={{
                         alignItems: 'center',

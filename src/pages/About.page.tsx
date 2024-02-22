@@ -25,7 +25,7 @@ const AboutPage = forwardRef<HTMLDivElement, AboutPageProps>(
                 <PageBuilder
                     id="about-page-contect"
                     children={aboutComponent}
-                    isActive={isActive}
+                    isActive={true}
                 />
             </div>
         );

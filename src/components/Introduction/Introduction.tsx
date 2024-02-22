@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, useMediaQuery } from "@mui/material";
 import TypingText from "../../common/TypingText/TypingText";
 import { useEffect, useState } from "react";
 import CustomButton from "../../common/CustomButton/CustomButton";
@@ -15,13 +15,15 @@ interface IntroductionProps {
     onAboutMeClick: () => void;
 }
 
-const Introduction: React.FC<IntroductionProps> = ({ 
-    name, 
-    jobs, 
+const Introduction: React.FC<IntroductionProps> = ({
+    name,
+    jobs,
     intro,
     onAboutMeClick
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -30,9 +32,27 @@ const Introduction: React.FC<IntroductionProps> = ({
         return () => clearInterval(intervalId);
     }, [jobs]);
 
+    const profileImage = (
+        <Grid item xs={12} sm={6} md={6}
+            container
+            justifyContent="center"
+        >
+            <img
+                src={avatarImage}
+                alt="Avatar"
+                style={{
+                    width: "auto",
+                    height: isMobile ? "200px": "350px",
+                    marginBottom: isMobile ? '50px' : '0',
+                }}
+            />
+        </Grid>
+    );
+
     return (
         <div id="introduction">
             <Grid container>
+                {isMobile && profileImage}
                 <Grid item xs={12} sm={6} md={6}>
                     <Box
                         sx={{
@@ -82,9 +102,9 @@ const Introduction: React.FC<IntroductionProps> = ({
                                 md: "flex-start",
                             }}
                         >
-                            <CustomButton 
-                            label="About Me" 
-                            onClick={onAboutMeClick}
+                            <CustomButton
+                                label="About Me"
+                                onClick={onAboutMeClick}
                             />
                             <Box sx={{ marginLeft: "16px" }}>
                                 {socialLinks.map((item, index) => (
@@ -100,16 +120,7 @@ const Introduction: React.FC<IntroductionProps> = ({
                         </LinksContainer>
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={6} md={6} container justifyContent="center">
-                    <img
-                        src={avatarImage}
-                        alt="Avatar"
-                        style={{
-                            width: "auto",
-                            height: "300px",
-                        }}
-                    />
-                </Grid>
+                {!isMobile && profileImage}
             </Grid>
         </div>
     );

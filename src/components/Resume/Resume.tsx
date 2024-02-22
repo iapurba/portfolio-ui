@@ -25,26 +25,24 @@ const Resume: React.FC<ResumeProps> = ({
     certifications,
 }) => {
     return (
-        <Box>
-            <Grid container>
-                <Grid item sm={12} md={6} p={1}>
-                    <Box className="work-experience-box">
-                        <WorkExperience experiences={workExperiences} />
-                    </Box>
-                    <Box className="certifications-box" pt={2}>
-                        <Certifications certList={certifications} />
-                    </Box>
-                </Grid>
-                <Grid item sm={12} md={6} p={1}>
-                    <Box className="technical-skills-box">
-                        <SkillList skills={skills} />
-                    </Box>
-                    <Box className="education-history-box" pt={2}>
-                        <EducationHistory educationHistory={educations} />
-                    </Box>
-                </Grid>
+        <Grid container className="resume-container">
+            <Grid item sm={12} md={6} p={1}>
+                <Box className="work-experience-box">
+                    <WorkExperience experiences={workExperiences} />
+                </Box>
+                <Box className="certifications-box" pt={2}>
+                    <Certifications certList={certifications} />
+                </Box>
             </Grid>
-        </Box>
+            <Grid item sm={12} md={6} p={1}>
+                <Box className="technical-skills-box">
+                    <SkillList skills={skills} />
+                </Box>
+                <Box className="education-history-box" pt={2}>
+                    <EducationHistory educationHistory={educations} />
+                </Box>
+            </Grid>
+        </Grid>
     )
 };
 
