@@ -23,9 +23,10 @@ const About: React.FC<AboutProps> = ({ bio, onHireMeClick }) => {
                 <img src={avatarImage}
                     alt="Avatar"
                     style={{
+                        width: "auto",
                         margin: "auto",
                         height: isMobile? "200px": "350px",
-                        marginBottom: isMobile ? '50px' : '0',
+                        marginBottom: isMobile ? '50px' : 'none',
                     }}
                 />
             </Grid>
