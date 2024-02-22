@@ -1,9 +1,15 @@
 import Resume from "../components/Resume/Resume"
 import profileData from "../data/profile.data";
 import PageBuilder from "../common/PageBuilder/PageBuilder";
+import { forwardRef } from "react";
 
+interface ResumePageProps {
+    id: string;
+    isActive: boolean;
+}
 
-const ResumePage: React.FC = () => {
+const ResumePage = forwardRef<HTMLDivElement, ResumePageProps>(
+    ({ id, isActive }, ref) => {
 
     const workExperiences = profileData.workExperience;
     const skills = profileData.technicalSkills;
@@ -20,13 +26,16 @@ const ResumePage: React.FC = () => {
     );
 
     return (
-        <PageBuilder
-            id="resume"
-            title="Resume"
-            subtitle1="I Develop Skills Regularly To Keep Me Updated"
-            children={resumeComponent}
-        />
+        <div id={id} ref={ref}>
+            <PageBuilder
+                id="resume-page-content"
+                title="Resume"
+                subtitle1="I Develop Skills Regularly To Keep Me Updated"
+                children={resumeComponent}
+                isActive={isActive}
+            />
+        </div>
     );
-};
+});
 
 export default ResumePage;

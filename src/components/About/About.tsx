@@ -7,9 +7,10 @@ import Typography from "@mui/material/Typography";
 
 interface AboutProps {
     bio: string;
+    onHireMeClick: () => void;
 }
 
-const About: React.FC<AboutProps> = ({ bio }) => {
+const About: React.FC<AboutProps> = ({ bio, onHireMeClick }) => {
     return (
         <Grid container>
             <Grid item xs={12} sm={12} md={6}
@@ -53,6 +54,7 @@ const About: React.FC<AboutProps> = ({ bio }) => {
                         <Box mr={1}>
                             <CustomButton
                                 label="Hire Me"
+                                onClick={onHireMeClick}
                             />
                         </Box>
                         <Box>

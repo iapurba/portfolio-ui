@@ -12,9 +12,15 @@ interface IntroductionProps {
     name: string;
     jobs: string[];
     intro: string;
+    onAboutMeClick: () => void;
 }
 
-const Introduction: React.FC<IntroductionProps> = ({ name, jobs, intro }) => {
+const Introduction: React.FC<IntroductionProps> = ({ 
+    name, 
+    jobs, 
+    intro,
+    onAboutMeClick
+}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -76,7 +82,10 @@ const Introduction: React.FC<IntroductionProps> = ({ name, jobs, intro }) => {
                                 md: "flex-start",
                             }}
                         >
-                            <CustomButton label="About Me" />
+                            <CustomButton 
+                            label="About Me" 
+                            onClick={onAboutMeClick}
+                            />
                             <Box sx={{ marginLeft: "16px" }}>
                                 {socialLinks.map((item, index) => (
                                     <SocialLinkIcon

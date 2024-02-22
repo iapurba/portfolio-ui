@@ -18,11 +18,15 @@ interface AppHeaderProps {
         url: string;
     }[];
     isScrolled: boolean;
+    activeMenuItem: string;
+    onMenuClick: (page: string) => void;
 }
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
     navItems,
     isScrolled,
+    activeMenuItem,
+    onMenuClick,
 }) => {
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -52,9 +56,9 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                                 key={index}
                                 href={item.url}
                                 underline="none"
+                                isActive={activeMenuItem === item.name.toLowerCase()}
                                 onClick={() => {
-                                    console.log(item.name);
-                                    console.log(isScrolled);
+                                    onMenuClick(item.name.toLowerCase())
                                 }}
                             >
                                 {item.name}
@@ -122,6 +126,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                                     underline="none"
                                     sx={{ textAlign: "center" }}
                                     onClick={handleDrawerToggle}
+                                    isActive={activeMenuItem === item.name.toLowerCase()}
                                 >
                                     {item.name}
                                 </MenuLink>

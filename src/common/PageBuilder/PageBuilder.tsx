@@ -3,7 +3,8 @@ import Box from "@mui/material/Box";
 import PageHeader from "../PageHeader/PageHeader";
 
 interface PageBuilderProps {
-    id: string;
+    isActive: boolean;
+    id?: string;
     className?: string;
     title?: string;
     subtitle1?: string;
@@ -12,6 +13,7 @@ interface PageBuilderProps {
     sx?: Object;
 }
 const PageBuilder: React.FC<PageBuilderProps> = ({
+    isActive,
     id,
     className,
     title,
@@ -21,7 +23,10 @@ const PageBuilder: React.FC<PageBuilderProps> = ({
     sx
 }) => {
     return (
-        <Box id={id} sx={{ padding: "30px 0", ...sx }}>
+        <Box id={id} sx={{
+            padding: `${isActive ? "100px 0" : "30px 0"}`,
+            ...sx
+        }}>
             <Container
                 className={className
                     ? className : `${id}-container`}

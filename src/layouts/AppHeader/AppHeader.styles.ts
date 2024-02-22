@@ -38,15 +38,16 @@ export const AppHeaderContentWrapper = styled(Container)({
     width: "100%",
 });
 
-export const MenuLink = styled(Link)({
-    padding: "12px 16px",
-    color: "#000000",
-    fontWeight: '500',
-    alignItems: "center",
-    "&:hover": {
-        color: "#F75023",
-    },
-});
+export const MenuLink = styled(Link)<{ isActive: boolean }>(
+    ({ isActive }) => ({
+        padding: "12px 16px",
+        color: isActive ? "#F75023" : "#000000",
+        fontWeight: '500',
+        alignItems: "center",
+        "&:hover": {
+            color: "#F75023",
+        },
+    }));
 
 export const HamburgerIcon = styled(MenuRoundedIcon)({
     "&.MuiSvgIcon-root": {
