@@ -9,7 +9,7 @@ import {
     EducationType,
     TechnicalSkillType,
     WorkExperienceType
-} from "../../types/Profile.type";
+} from "../../types/Resume.type";
 
 interface ResumeProps {
     workExperiences: WorkExperienceType[];

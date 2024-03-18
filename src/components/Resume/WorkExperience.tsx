@@ -11,23 +11,10 @@ import {
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { ResumeContentWrapper, CustomHeader, OfficeIcon, ResumeContentHeaderWrapper } from "./styles";
-
-interface Job {
-    id: number;
-    title: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-}
-
-interface Experience {
-    id: number;
-    company: string;
-    jobs: Job[];
-}
+import { WorkExperienceType } from "../../types/Resume.type";
 
 interface WorkExperienceProps {
-    experiences: Experience[];
+    experiences: WorkExperienceType[];
 }
 
 const WorkExperience: React.FC<WorkExperienceProps> = ({ experiences }) => {
@@ -45,10 +32,10 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ experiences }) => {
                     },
                 }}
             >
-                {experiences.map((experience) => (
-                    <React.Fragment key={experience.id}>
-                        {experience.jobs.map((job) => (
-                            <TimelineItem key={job.id}>
+                {experiences.map((experience, i) => (
+                    <React.Fragment key={i}>
+                        {experience.jobs.map((job, j) => (
+                            <TimelineItem key={j}>
                                 <TimelineSeparator>
                                     <TimelineDot
                                         sx={{ backgroundColor: "#F75023" }}
@@ -61,7 +48,7 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ experiences }) => {
                                             {job.title}
                                         </Typography>
                                         <Typography variant="subtitle1">
-                                            {experience.company}
+                                            {experience.organization}
                                         </Typography>
                                         <Typography variant="body2">
                                             {job.startDate} - {job.endDate}

@@ -1,7 +1,10 @@
 import Resume from "../components/Resume/Resume"
-import profileData from "../data/profile.data";
 import PageBuilder from "../common/PageBuilder/PageBuilder";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
+import { fetchResumeData } from "../services/portfolioService";
+import { profileConstants } from "../utils/constants";
+import ResumeType from "../types/Resume.type";
+import { normalizeResumeData } from "../utils/helper";
 
 interface ResumePageProps {
     id: string;
@@ -10,32 +13,41 @@ interface ResumePageProps {
 
 const ResumePage = forwardRef<HTMLDivElement, ResumePageProps>(
     ({ id, isActive }, ref) => {
+        const [resumeData, setResumeData] = useState<ResumeType>();
 
-    const workExperiences = profileData.workExperience;
-    const skills = profileData.technicalSkills;
-    const educations = profileData.education;
-    const certifications = profileData.certifications;
+        useEffect(() => {
+            const getResumeData = async () => {
+                try {
+                    const response = await fetchResumeData(profileConstants.PROFILE_ID);
+                    const normalizedData = normalizeResumeData(response.data);
+                    setResumeData(normalizedData);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+            getResumeData();
+        }, [])
 
-    const resumeComponent = (
-        <Resume
-            workExperiences={workExperiences}
-            skills={skills}
-            educations={educations}
-            certifications={certifications}
-        />
-    );
-
-    return (
-        <div id={id} ref={ref}>
-            <PageBuilder
-                id="resume-page-content"
-                title="Resume"
-                subtitle1="I Develop Skills Regularly To Keep Me Updated"
-                children={resumeComponent}
-                isActive={isActive}
+        const resumeComponent = resumeData && (
+            <Resume
+                workExperiences={resumeData.workExperiences}
+                skills={resumeData.technicalSkills}
+                educations={resumeData.educations}
+                certifications={resumeData.certifications}
             />
-        </div>
-    );
-});
+        );
+
+        return (
+            <div id={id} ref={ref}>
+                <PageBuilder
+                    id="resume-page-content"
+                    title="Resume"
+                    subtitle1="I Develop Skills Regularly To Keep Me Updated"
+                    children={resumeComponent}
+                    isActive={isActive}
+                />
+            </div>
+        );
+    });
 
 export default ResumePage;
