@@ -7,6 +7,7 @@ import AboutPage from './pages/About.page';
 import PortfolioPage from './pages/Portfolio.page';
 import { useEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
+import { ProfileProvider } from './context/ProfileContext';
 
 const navItems = [
     { name: 'Home', url: '#home' },
@@ -29,7 +30,6 @@ const App: React.FC = () => {
 
     const handleMenuClick = (page: string) => {
         setActiveMenuItem(page);
-        console.log(activeMenuItem);
     };
 
     useEffect(() => {
@@ -132,44 +132,46 @@ const App: React.FC = () => {
     }, []);
 
     return (
-        <div className="App" onScroll={() => (setIsScrolled(true))}>
-            <AppHeader
-                navItems={navItems}
-                isScrolled={isScrolled}
-                activeMenuItem={activeMenuItem}
-                onMenuClick={handleMenuClick}
-            />
-            <Box>
-                <HomePage
-                    id="home"
-                    isActive={activeMenuItem === "home"}
-                    scrollIntoAbout={scrollIntoAbout}
-                    ref={homePageRef}
+        <ProfileProvider>
+            <div className="App" onScroll={() => (setIsScrolled(true))}>
+                <AppHeader
+                    navItems={navItems}
+                    isScrolled={isScrolled}
+                    activeMenuItem={activeMenuItem}
+                    onMenuClick={handleMenuClick}
                 />
-                <AboutPage
-                    id="about"
-                    isActive={activeMenuItem === "about"}
-                    scrollIntoContact={scrollIntoContact}
-                    ref={aboutPageRef}
-                />
-                <ResumePage
-                    id="resume"
-                    isActive={activeMenuItem === "resume"}
-                    ref={resumePageRef}
-                />
-                <PortfolioPage
-                    id="portfolio"
-                    isActive={activeMenuItem === "portfolio"}
-                    ref={portfolioPageRef}
-                />
-                <ContactPage
-                    id="contact"
-                    isActive={activeMenuItem === "contact"}
-                    ref={contactPageRef}
-                />
-                <AppFooter />
-            </Box>
-        </div>
+                <Box>
+                    <HomePage
+                        id="home"
+                        isActive={activeMenuItem === "home"}
+                        scrollIntoAbout={scrollIntoAbout}
+                        ref={homePageRef}
+                    />
+                    <AboutPage
+                        id="about"
+                        isActive={activeMenuItem === "about"}
+                        scrollIntoContact={scrollIntoContact}
+                        ref={aboutPageRef}
+                    />
+                    <ResumePage
+                        id="resume"
+                        isActive={activeMenuItem === "resume"}
+                        ref={resumePageRef}
+                    />
+                    <PortfolioPage
+                        id="portfolio"
+                        isActive={activeMenuItem === "portfolio"}
+                        ref={portfolioPageRef}
+                    />
+                    <ContactPage
+                        id="contact"
+                        isActive={activeMenuItem === "contact"}
+                        ref={contactPageRef}
+                    />
+                    <AppFooter />
+                </Box>
+            </div>
+        </ProfileProvider>
     );
 }
 

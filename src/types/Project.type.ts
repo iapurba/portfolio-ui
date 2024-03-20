@@ -1,13 +1,13 @@
-export type ProjectTag = 
-'aws' | 'cicd' | 'kubernetes' | 'terraform'| 'python' | 'monitoring' | 'all';
-
 export interface ProjectType {
+    _id: string;
+    projectId: string;
     title: string;
-    tags: ProjectTag[];
-    details: string;
+    tools: [string];
+    description: string;
+    imageUrl: string;
 };
 
-export interface TabItem {
+export interface TabItemType {
     label: string;
-    value: ProjectTag;
+    value: string;
 }

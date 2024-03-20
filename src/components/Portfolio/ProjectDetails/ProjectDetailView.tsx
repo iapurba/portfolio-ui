@@ -5,15 +5,14 @@ import IconTextButton from '../../../common/IconTextButton/IconTextButton';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import loadBalancer from "../../../assets/loadbalancer.png";
 import { CloseButton, CloseIcon, ProjectDetailBoxWrapper, ProjectDetailContent, ProjectDetailFooter } from './styles';
 
 
 interface ProjectDetailViewProps {
     onClose: () => void;
     title: string;
-    details: string;
-    image?: any;
+    description: string;
+    imageUrl: string;
     viewLiveUrl?: string;
     viewSourceCodeUrl?: string;
 }
@@ -21,14 +20,18 @@ interface ProjectDetailViewProps {
 const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
     onClose,
     title,
-    details,
-    image,
+    description,
+    imageUrl,
     viewLiveUrl,
     viewSourceCodeUrl
 }) => {
 
     const handleClose = () => {
         onClose();
+    };
+
+    const handleLinkClick = (link: string): void => {
+        window.open(link, '_blank');
     };
 
     return (
@@ -42,24 +45,28 @@ const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                     alt="green iguana"
                     height={"auto"}
                     width={100}
-                    image={loadBalancer}
+                    image={imageUrl}
                 />
                 <ProjectDetailContent>
                     <Typography fontSize={"24px"}>{title}</Typography>
-                    <Typography dangerouslySetInnerHTML={{ __html: details }} />
+                    <Typography dangerouslySetInnerHTML={{ __html: description }} />
                 </ProjectDetailContent>
                 <ProjectDetailFooter>
                     <Box>
                         {viewLiveUrl &&
                             <IconTextButton
                                 startIcon={VisibilityRoundedIcon}
-                                label='Preview'
+                                label='Live Preview'
+                                onClick={() => handleLinkClick(viewLiveUrl)}
                             />
                         }
-                        <IconTextButton
-                            startIcon={CodeRoundedIcon}
-                            label='Source Code'
-                        />
+                        {viewSourceCodeUrl &&
+                            <IconTextButton
+                                startIcon={CodeRoundedIcon}
+                                label='Source Code'
+                                onClick={() => handleLinkClick(viewSourceCodeUrl)}
+                            />
+                        }
                     </Box>
                     <Box>
                         <IconTextButton

@@ -6,11 +6,11 @@ import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import IconTextButton from '../../../common/IconTextButton/IconTextButton';
 import { ProjectTitleText, ProjectCardWrapper, ProjectDetailsText } from './ProjectCard.styles';
-import loadBalancer from "../../../assets/loadbalancer.png";
 
 interface ProjectCardProps {
     title: string;
-    details: string;
+    description: string;
+    imageUrl: string;
     viewLiveUrl?: string;
     viewSourceCodeUrl?: string;
     onClick: () => void;
@@ -18,11 +18,16 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
     title,
-    details,
+    description,
+    imageUrl,
     viewLiveUrl,
     viewSourceCodeUrl,
     onClick
 }) => {
+    const handleLinkClick = (link: string): void => {
+        window.open(link, '_blank');
+    };
+
     return (
         <ProjectCardWrapper onClick={onClick}>
             <CardMedia
@@ -30,21 +35,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 alt="green iguana"
                 height={"auto"}
                 width={100}
-                image={loadBalancer}
+                image={imageUrl}
             />
             <CardContent>
                 <ProjectTitleText>{title}</ProjectTitleText>
-                <ProjectDetailsText dangerouslySetInnerHTML={{ __html: details }} />
+                <ProjectDetailsText dangerouslySetInnerHTML={{ __html: description }} />
             </CardContent>
             <CardActions>
                 <IconTextButton
                     startIcon={VisibilityRoundedIcon}
                     label='View Details'
                 />
-                <IconTextButton
-                    startIcon={CodeRoundedIcon}
-                    label='Source Code'
-                />
+                {viewSourceCodeUrl &&
+                    <IconTextButton
+                        startIcon={CodeRoundedIcon}
+                        label='Source Code'
+                        onClick={() => handleLinkClick(viewSourceCodeUrl)}
+                    />
+                }
             </CardActions>
         </ProjectCardWrapper>
     );

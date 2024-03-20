@@ -1,8 +1,10 @@
 import Portfolio from "../components/Portfolio/Portfolio";
-import { projectData } from "../data/project.data";
-import { TabItem } from "../types/Project.type";
+import { ProjectType } from "../types/Project.type";
 import PageBuilder from "../common/PageBuilder/PageBuilder";
-import { forwardRef } from "react";
+import { forwardRef, useEffect, useState } from "react";
+import { fetchProjectsData } from "../services/portfolioService";
+import { profileConstants } from "../utils/constants";
+import { getDistinctProjectTabs, normalizeProjectData } from "../utils/project.helper";
 
 interface PortfolioPageProps {
     id: string;
@@ -11,36 +13,42 @@ interface PortfolioPageProps {
 
 const PortfolioPage = forwardRef<HTMLDivElement, PortfolioPageProps>(
     ({ id, isActive }, ref) => {
+        const [projectData, setProjectData] = useState<ProjectType[]>([]);
+        const [tabs, setTabs] = useState<string[]>(['all']);
 
-    const tabs: TabItem[] = [
-        { label: 'All', value: 'all' },
-        { label: 'AWS', value: 'aws' },
-        { label: 'Terraform', value: 'terraform' },
-        { label: 'Python', value: 'python' },
-        { label: 'CI/CD', value: 'cicd' },
-        { label: 'Kubernetes', value: 'kubernetes' },
-        { label: 'Monitoring', value: 'monitoring' },
-    ];
-    const projects = projectData;
+        useEffect(() => {
+            const getProjectData = async (profileId: string) => {
+                try {
+                    const response = await fetchProjectsData(profileId);
+                    const normalizedData = normalizeProjectData(response.data);
+                    setProjectData(normalizedData);
+                    const distinctTabs = getDistinctProjectTabs(normalizedData);
+                    setTabs(distinctTabs);
+                } catch (error) {
+                    console.error('Error fetching profile data:', error);
+                }
+            }
+            getProjectData(profileConstants.PROFILE_ID);
+        }, []);
 
-    const portfolioComponent = (
-        <Portfolio
-            tabs={tabs}
-            projects={projects}
-        />
-    );
-
-    return (
-        <div id={id} ref={ref}>
-            <PageBuilder
-                id="portfolio-page-content"
-                title="Portfolio"
-                subtitle1="My Amaazing Works"
-                children={portfolioComponent}
-                isActive={isActive}
+        const portfolioComponent = projectData?.length && (
+            <Portfolio
+                tabs={tabs}
+                projects={projectData}
             />
-        </div>
-    );
-});
+        );
+
+        return (
+            <div id={id} ref={ref}>
+                <PageBuilder
+                    id="portfolio-page-content"
+                    title="Portfolio"
+                    subtitle1="My Amaazing Works"
+                    children={portfolioComponent}
+                    isActive={isActive}
+                />
+            </div>
+        );
+    });
 
 export default PortfolioPage;
