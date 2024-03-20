@@ -3,6 +3,7 @@ import ProfileType from "../types/Profile.type";
 import { fetchProfileData } from "../services/portfolioService";
 import { profileConstants } from "../utils/constants";
 import { normalizeProfileData } from "../utils/profile.helper";
+import SkeletonLoader from "../common/SkeletonLoader/SkeletonLoader";
 
 interface ProfileContextType {
     profileData: ProfileType | null;
@@ -23,20 +24,25 @@ export const ProfileProvider: React.FC<any> = ({ children }) => {
     useEffect(() => {
         const getProfileData = async (profileId: string) => {
             try {
-                const response = await fetchProfileData(profileId);
-                const normalizedData = normalizeProfileData(response.data);
-                setProfileData(normalizedData);
-                setLoading(false);
+                if (!profileData) {
+                    const response = await fetchProfileData(profileId);
+                    const normalizedData = normalizeProfileData(response.data);
+                    setProfileData(normalizedData);
+                    setLoading(false);
+                }
             } catch (error) {
                 console.error('Error fetching profile data:', error);
-                setLoading(false);
             }
         }
         getProfileData(profileConstants.PROFILE_ID);
-    }, []);
+    }, [profileData]);
+
+    if (loading) {
+        return <SkeletonLoader />;
+    };
 
     return (
-        <ProfileContext.Provider value={{profileData, loading}}>
+        <ProfileContext.Provider value={{ profileData, loading }}>
             {children}
         </ProfileContext.Provider>
     );
