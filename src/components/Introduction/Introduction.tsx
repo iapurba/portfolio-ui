@@ -4,14 +4,15 @@ import TypingText from "../../common/TypingText/TypingText";
 import { useEffect, useState } from "react";
 import CustomButton from "../../common/CustomButton/CustomButton";
 import SocialLinkIcon from "../../common/SocialLinkIcon/SocialLinkIcon";
-import avatarImage from "../../assets/souravdinda1.png";
-import { socialLinks } from "../../data/socialLinks";
 import { BioText, LinksContainer } from "./Introduction.styles";
+import { mapSocialIcons } from "../../utils/profile.helper";
 
 interface IntroductionProps {
     name: string;
     jobs: string[];
     intro: string;
+    profileImageUrl: string;
+    socialAccounts: Object;
     onAboutMeClick: () => void;
 }
 
@@ -19,6 +20,8 @@ const Introduction: React.FC<IntroductionProps> = ({
     name,
     jobs,
     intro,
+    profileImageUrl,
+    socialAccounts,
     onAboutMeClick
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,7 +41,7 @@ const Introduction: React.FC<IntroductionProps> = ({
             justifyContent="center"
         >
             <img
-                src={avatarImage}
+                src={profileImageUrl}
                 alt="Avatar"
                 style={{
                     width: "auto",
@@ -107,13 +110,13 @@ const Introduction: React.FC<IntroductionProps> = ({
                                 onClick={onAboutMeClick}
                             />
                             <Box sx={{ marginLeft: "16px" }}>
-                                {socialLinks.map((item, index) => (
+                                {Object.entries(socialAccounts).map(([key, value]) => (
                                     <SocialLinkIcon
                                         variant="primary"
-                                        key={index}
-                                        name={item.name}
-                                        icon={item.icon}
-                                        url={item.url}
+                                        key={key}
+                                        name={name}
+                                        icon={mapSocialIcons(key)}
+                                        url={value}
                                     />
                                 ))}
                             </Box>

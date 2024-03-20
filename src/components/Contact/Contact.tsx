@@ -1,31 +1,26 @@
 import Grid from "@mui/material/Grid"
 import ContactDetails from "./ContactDetails";
 import ContactMeForm from "./ContactMeForm";
+import { ContactDetailsType } from "../../types/Profile.type";
 
 interface ContantProps {
-    contactDetails: {
-        address: string;
-        email: string;
-        mobile?: string;
-    };
-    onSubmit: () => void;
+    contactDetails: ContactDetailsType;
 }
 const Contact: React.FC<ContantProps> = ({
     contactDetails,
-    onSubmit
 }) => {
-    const { address, email, mobile } = contactDetails;
+    const { address, email, phone } = contactDetails;
     return (
         <Grid container>
             <Grid item xs={12} sm={12} md={6}>
                 <ContactDetails
                     address={address}
                     email={email}
-                    mobile={mobile}
+                    phone={phone}
                 />
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-                <ContactMeForm onSubmit={onSubmit} />
+                <ContactMeForm />
             </Grid>
         </Grid>
     )

@@ -1,7 +1,7 @@
 import About from "../components/About/About";
-import profileData from "../data/profile.data";
 import PageBuilder from "../common/PageBuilder/PageBuilder";
 import { forwardRef } from "react";
+import { useProfile } from "../context/ProfileContext";
 
 interface AboutPageProps {
     id: string;
@@ -11,12 +11,19 @@ interface AboutPageProps {
 
 const AboutPage = forwardRef<HTMLDivElement, AboutPageProps>(
     ({ id, isActive, scrollIntoContact }, ref) => {
-        const bio = profileData.bio;
+        const { profileData } = useProfile();
+
+        const handleDownloadCV = (link: string) => {
+            window.open(link, '_blank');
+        };
 
         const aboutComponent = (
+            profileData?.bio &&
             <About
-                bio={bio}
+                bio={profileData.bio}
+                bioImageUrl={profileData.bioImageUrl}
                 onHireMeClick={scrollIntoContact}
+                onDownloadCvClick={() => handleDownloadCV(profileData.downloadCvUrl)}
             />
         );
 

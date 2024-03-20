@@ -27,13 +27,13 @@ const ContactItem: React.FC<ContactItemProps> = ({
 interface ContactDetailsProps {
   address: string;
   email: string;
-  mobile?: string;
+  phone?: string;
 }
 
 const ContactDetails: React.FC<ContactDetailsProps> = ({
   address,
   email,
-  mobile,
+  phone,
 }) => {
   return (
     <Box display={"flex"} flexDirection={"column"}>
@@ -47,11 +47,11 @@ const ContactDetails: React.FC<ContactDetailsProps> = ({
         field="Email"
         value={email}
       />
-      {mobile &&
+      {phone &&
         <ContactItem
           icon={PhoneIcon}
           field="Phone"
-          value={mobile}
+          value={phone}
         />
       }
     </Box>

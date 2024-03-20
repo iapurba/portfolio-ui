@@ -1,7 +1,7 @@
 import Contact from "../components/Contact/Contact";
-import profileData from "../data/profile.data";
 import PageBuilder from "../common/PageBuilder/PageBuilder";
 import { forwardRef } from "react";
+import { useProfile } from "../context/ProfileContext";
 
 interface ContactPageProps {
     id: string;
@@ -10,17 +10,10 @@ interface ContactPageProps {
 
 const ContactPage = forwardRef<HTMLDivElement, ContactPageProps>(
     ({ id, isActive }, ref) => {
-        const ContactDetails = profileData.contactDetails;
+        const { profileData } = useProfile();
 
-        const submitContactForm = () => {
-            console.log("submit contact form");
-        };
-
-        const contactComponent = (
-            <Contact
-                contactDetails={ContactDetails}
-                onSubmit={submitContactForm}
-            />
+        const contactComponent = profileData && (
+            <Contact contactDetails={profileData?.contactDetails} />
         );
 
         return (

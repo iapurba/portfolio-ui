@@ -1,5 +1,4 @@
 import Grid from "@mui/material/Grid";
-import avatarImage from "../../assets/souravdinda5.png";
 import Box from "@mui/material/Box";
 import CustomButton from "../../common/CustomButton/CustomButton";
 import PageHeader from "../../common/PageHeader/PageHeader";
@@ -8,10 +7,17 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface AboutProps {
     bio: string;
+    bioImageUrl: string;
     onHireMeClick: () => void;
+    onDownloadCvClick: () => void;
 }
 
-const About: React.FC<AboutProps> = ({ bio, onHireMeClick }) => {
+const About: React.FC<AboutProps> = ({ 
+    bio, 
+    bioImageUrl,
+    onHireMeClick,
+    onDownloadCvClick,
+}) => {
     const isMobile = useMediaQuery('(max-width:600px)');
     
     return (
@@ -20,7 +26,8 @@ const About: React.FC<AboutProps> = ({ bio, onHireMeClick }) => {
                 container
                 justifyContent="center"
             >
-                <img src={avatarImage}
+                <img 
+                    src={bioImageUrl}
                     alt="Avatar"
                     style={{
                         width: "auto",
@@ -65,6 +72,7 @@ const About: React.FC<AboutProps> = ({ bio, onHireMeClick }) => {
                             <CustomButton
                                 label="Download CV"
                                 color="green"
+                                onClick={onDownloadCvClick}
                             />
                         </Box>
                     </Box>

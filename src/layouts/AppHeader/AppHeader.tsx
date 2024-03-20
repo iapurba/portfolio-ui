@@ -11,6 +11,7 @@ import {
 import Logo from '../../common/Logo/Logo';
 import CustomButton from '../../common/CustomButton/CustomButton';
 import { Divider } from '@mui/material';
+import { useProfile } from '../../context/ProfileContext';
 
 interface AppHeaderProps {
     navItems: {
@@ -30,6 +31,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 }) => {
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const { profileData } = useProfile();
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
@@ -45,7 +47,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                 isScrolled={isScrolled}
             >
                 <AppHeaderContentWrapper>
-                    <Logo name="SD" url="#" />
+                    {profileData &&
+                        <Logo
+                            name={`${profileData?.firstname[0]}${profileData.lastname[0]}`}
+                            url="#home"
+                        />
+                    }
                     <Box className="nav-menu-container"
                         sx={{
                             display: { xs: 'none', sm: 'block' }
@@ -67,7 +74,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                         <CustomButton
                             variant="outlined"
                             label="Download CV"
-                            onClick={() => ({})}
+                            onClick={() => (window.open(profileData?.downloadCvUrl, "_blank"))}
                         />
                     </Box>
                     <Box sx={{
@@ -101,7 +108,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
                     }}
                 >
                     <AppHeaderContentWrapper sx={{ padding: "6px 16px" }}>
-                        <Logo name="SD" url="#" />
+                        <Logo
+                            name={`${profileData?.firstname[0]}${profileData?.lastname[0]}`}
+                            url="#home"
+                        />
                         <Box sx={{
                             display: { xs: 'block', sm: 'none' }
                         }}>

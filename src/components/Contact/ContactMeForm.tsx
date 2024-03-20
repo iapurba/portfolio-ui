@@ -3,14 +3,16 @@ import Box from '@mui/material/Box';
 import CustomTextField from '../../common/CustomTextField/CustomTextField';
 import CustomButton from '../../common/CustomButton/CustomButton';
 import { ChangeEvent, useState } from 'react';
+import { sendMessage } from '../../services/portfolioService';
+import { profileConstants } from '../../utils/constants';
 
 interface ContactMeFormProps {
-    onSubmit: () => void;
+    onSubmit?: () => void;
 }
 
 interface FormData {
-    name: string;
-    email: string;
+    senderName: string;
+    senderEmail: string;
     subject: string;
     message: string;
 }
@@ -19,8 +21,8 @@ const ContactMeForm: React.FC<ContactMeFormProps> = ({
     onSubmit,
 }) => {
     const [formData, setFormData] = useState<FormData>({
-        name: '',
-        email: '',
+        senderName: '',
+        senderEmail: '',
         subject: '',
         message: ''
     })
@@ -33,8 +35,17 @@ const ContactMeForm: React.FC<ContactMeFormProps> = ({
         }));
     }
 
-    const handleSubmit = () => {
-        console.log("handle submit ", formData)
+    const handleSubmit = async () => {
+        await sendMessage({
+            ...formData,
+            toProfileId: profileConstants.PROFILE_ID,
+        });
+        setFormData({
+            senderName: '',
+            senderEmail: '',
+            subject: '',
+            message: '',
+        })
     }
 
     return (

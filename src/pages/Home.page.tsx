@@ -1,15 +1,14 @@
 import Introduction from "../components/Introduction/Introduction";
-import profileData from "../data/profile.data";
-import BG from "../assets/bg2.jpg";
 import PageBuilder from "../common/PageBuilder/PageBuilder";
 import { forwardRef } from "react";
+import { useProfile } from "../context/ProfileContext";
 
 const homePageStyle = {
     height: '100vh',
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundImage: `url(${BG})`,
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/background-cover.jpg)`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     maring: 'auto'
@@ -23,12 +22,15 @@ interface HomePageProps {
 
 const HomePage = forwardRef<HTMLDivElement, HomePageProps>(
     ({ id, isActive, scrollIntoAbout }, ref) => {
+        const { profileData } = useProfile();
 
-        const introComponent = (
+        const introComponent = profileData && (
             <Introduction
-                name={profileData.name}
+                name={`${profileData.firstname} ${profileData.lastname}`}
                 jobs={profileData.jobs}
                 intro={profileData.intro}
+                socialAccounts={profileData.socialAccounts}
+                profileImageUrl={profileData.profileImageUrl}
                 onAboutMeClick={scrollIntoAbout}
             />
         );

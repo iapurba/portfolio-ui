@@ -9,7 +9,7 @@ type ServiceApiType = {
 
 export const portfolioServiceApi: ServiceApiType = {
     GET_PROFILE: {
-        path: '/profile/{profileId}',
+        path: '/profiles/{profileId}',
         method: 'GET'
     },
     GET_RESUME: {
