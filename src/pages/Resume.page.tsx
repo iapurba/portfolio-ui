@@ -4,7 +4,7 @@ import { forwardRef, useEffect, useState } from "react";
 import { fetchResumeData } from "../services/portfolioService";
 import { profileConstants } from "../utils/constants";
 import ResumeType from "../types/Resume.type";
-import { normalizeResumeData } from "../utils/helper";
+import { normalizeResumeData } from "../utils/resume.helper";
 
 interface ResumePageProps {
     id: string;
