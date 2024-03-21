@@ -1,5 +1,5 @@
 export const serviceConstants = {
-    SERVICE_DOMAIN: 'http://16.16.98.231:3001/portfolio-api/',
+    SERVICE_DOMAIN: 'http://16.16.98.231:3001/portfolio-api',
 };
 
 export const profileConstants = {
