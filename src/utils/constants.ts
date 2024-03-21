@@ -1,5 +1,5 @@
 export const serviceConstants = {
-    SERVICE_DOMAIN: 'https://backend.iapurba.click/portfolio-api/',
+    SERVICE_DOMAIN: 'https://backend.iapurba.click/portfolio-api',
 };
 
 export const profileConstants = {
