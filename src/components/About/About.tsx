@@ -64,7 +64,7 @@ const About: React.FC<AboutProps> = ({
                     >
                         <Box mr={1}>
                             <CustomButton
-                                label="Hire Me"
+                                label="Contact Me"
                                 onClick={onHireMeClick}
                             />
                         </Box>
