@@ -43,7 +43,7 @@ export const fetchProjectsData = async (profileId: string) => {
   }
 };
 
-export const sendMessage = async (payload: any) => {
+export const sendContactMessage = async (payload: any) => {
   const { path, method } = portfolioServiceApi.SEND_MESSAGE;
   try {
     const response = await createServiceRequest({

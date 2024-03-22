@@ -1,28 +1,30 @@
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 
-export const StyledTextField = styled(TextField)({
-    "& .MuiOutlinedInput-root": {
-        padding: "0px 15px",
-        borderRadius: "12px",
-        "& fieldset": {
-            borderColor: "#d6dbe5",
-            borderWidth: "1px",
+export const StyledTextField = styled(TextField)(
+    ({ className }) => ({
+        "& .MuiOutlinedInput-root": {
+            padding: "0px 15px",
+            borderRadius: "12px",
+            "& fieldset": {
+                borderColor: "#d6dbe5",
+                borderWidth: "1px",
+            },
+            "&:hover fieldset": {
+                borderColor: className?.includes('outlined-error-helper-text')
+                    ? "#d32f2f" : "#d6dbe5", // Override border color on hover
+            },
+            "&.Mui-focused fieldset": {
+                borderColor: "#d6dbe5", // Override border color on focus
+                borderWidth: "1px",
+            },
         },
-        "&:hover fieldset": {
-            borderColor: "#d6dbe5", // Override border color on hover
+        "& .MuiInputBase-input": {
+            fontSize: "18px",
+            color: "#000000",
+            fontWeight: "540",
         },
-        "&.Mui-focused fieldset": {
-            borderColor: "#d6dbe5", // Override border color on focus
-            borderWidth: "1px",
+        "& .MuiInputBase-inputMultiline": {
+            padding: "16.5px 14px",
         },
-    },
-    "& .MuiInputBase-input": {
-        fontSize: "18px",
-        color: "#000000",
-        fontWeight: "540",
-    },
-    "& .MuiInputBase-inputMultiline": {
-        padding: "16.5px 14px",
-    },
-});
+    }));
