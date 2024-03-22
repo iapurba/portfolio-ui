@@ -5,6 +5,8 @@ import CustomButton from '../../common/CustomButton/CustomButton';
 import { ChangeEvent, useState } from 'react';
 import { sendContactMessage } from '../../services/portfolioService';
 import { profileConstants } from '../../utils/constants';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ContactMeFormProps {
     onSubmit?: () => void;
@@ -80,10 +82,28 @@ const ContactMeForm: React.FC<ContactMeFormProps> = ({
                 message: '',
             });
             setFieldErrors({});
-            const response = await sendContactMessage(payload);
-            console.log(response);
+            await sendContactMessage(payload);
+            
+            toast.success('Message sent successfully!', {
+                position: "top-right",
+                autoClose: 3000,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         } catch (error) {
             console.log(error);
+            toast.error('Error sending message. Please try again later.', {
+                position: "top-right",
+                autoClose: 3000,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         }
     };
 
@@ -156,6 +176,7 @@ const ContactMeForm: React.FC<ContactMeFormProps> = ({
                     />
                 </Grid>
             </Grid>
+            <ToastContainer />
         </Box>
     );
 }
