@@ -47,11 +47,15 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ experiences }) => {
                                         <Typography variant="h6">
                                             {job.title}
                                         </Typography>
-                                        <Typography variant="subtitle1">
+                                        <Typography
+                                            variant="subtitle1"
+                                            fontWeight="bold"
+                                            sx={{ color: "#5F6368" }}
+                                        >
                                             {experience.organization}
                                         </Typography>
-                                        <Typography variant="body2">
-                                            {job.startDate} - {job.endDate}
+                                        <Typography variant="body2" mb={1} color="#00000099">
+                                            {job.startDate} - {job.endDate} &middot; {job.jobtype}
                                         </Typography>
                                         <Typography variant="body2">
                                             {job.description}
