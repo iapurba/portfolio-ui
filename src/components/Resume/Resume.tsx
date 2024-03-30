@@ -10,6 +10,7 @@ import {
     TechnicalSkillType,
     WorkExperienceType
 } from "../../types/Resume.type";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface ResumeProps {
     workExperiences: WorkExperienceType[];
@@ -24,6 +25,8 @@ const Resume: React.FC<ResumeProps> = ({
     educations,
     certifications,
 }) => {
+    const isMobile = useMediaQuery('(max-width:600px)');
+
     return (
         <Grid container className="resume-container">
             <Grid item xs={12} sm={12} md={6} p={1}>
@@ -36,7 +39,7 @@ const Resume: React.FC<ResumeProps> = ({
                             <Certifications certList={certifications} />
                         </Box>
                     ) : (
-                        <Box className="education-history-box" pt={2}>
+                        !isMobile && <Box className="education-history-box" pt={2}>
                             <EducationHistory educationHistory={educations} />
                         </Box>
                     )
@@ -48,7 +51,7 @@ const Resume: React.FC<ResumeProps> = ({
                     <SkillList skills={skills} />
                 </Box>
                 <Box className="education-history-box" pt={2}>
-                    {(certifications.length > 0) &&
+                    {((certifications.length > 0) || isMobile) &&
                         <EducationHistory educationHistory={educations} />
                     }
                 </Box>
