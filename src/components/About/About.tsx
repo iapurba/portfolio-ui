@@ -32,8 +32,8 @@ const About: React.FC<AboutProps> = ({
                     style={{
                         width: "auto",
                         margin: "auto",
-                        height: isMobile? "200px": "350px",
-                        marginBottom: isMobile ? '50px' : 'none',
+                        height: isMobile? "200px": "400px",
+                        marginBottom: isMobile ? '50px' : '100px',
                     }}
                 />
             </Grid>
