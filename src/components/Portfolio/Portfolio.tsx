@@ -37,6 +37,8 @@ const Portfolio: React.FC<PortFolioProps> = ({ tabs, projects }) => {
                         setDetailView(false);
                     }}
                     imageUrl={selectedProject?.imageUrl}
+                    viewSourceCodeUrl={selectedProject?.sourceCodeUrl}
+                    viewLiveUrl={selectedProject?.liveUrl}
                 />
             ) : (
                 <>
@@ -65,6 +67,8 @@ const Portfolio: React.FC<PortFolioProps> = ({ tabs, projects }) => {
                                     title={project?.title}
                                     description={project?.description}
                                     imageUrl={project.imageUrl}
+                                    viewSourceCodeUrl={project.sourceCodeUrl}
+                                    viewLiveUrl={project.liveUrl}
                                     onClick={() => {
                                         setSelectedProject(project);
                                         setDetailView(true);

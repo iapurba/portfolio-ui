@@ -11,6 +11,8 @@ export const normalizeProjectData = (data: any): ProjectType[] => {
         description: item?.description ?? "",
         tools: item?.tools ?? [],
         imageUrl: item?.imageUrl ?? "",
+        sourceCodeUrl: item?.sourceCodeUrl ?? "",
+        liveUrl: item?.liveUrl ?? "",
     }))
 };
 

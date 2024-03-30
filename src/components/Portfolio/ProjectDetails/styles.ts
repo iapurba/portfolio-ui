@@ -36,6 +36,9 @@ export const ProjectDetailFooter = styled(CardActions)`
 
     @media (max-width: 600px) {  /* For xs screens and below */
         width: padding: 10px 16px 20px;
+        display: block;
+        display: grid;
+        justify-content: flex-end;
     }
 `;
 

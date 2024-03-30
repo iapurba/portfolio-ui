@@ -68,7 +68,7 @@ const ProjectDetailView: React.FC<ProjectDetailViewProps> = ({
                             />
                         }
                     </Box>
-                    <Box>
+                    <Box style={{ display: 'flex', justifyContent: 'flex-end' }}>
                         <IconTextButton
                             startIcon={ChevronLeftIcon}
                             label='Go Back'

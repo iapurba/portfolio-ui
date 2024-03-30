@@ -5,6 +5,8 @@ export interface ProjectType {
     tools: [string];
     description: string;
     imageUrl: string;
+    sourceCodeUrl: string;
+    liveUrl: string;
 };
 
 export interface TabItemType {
