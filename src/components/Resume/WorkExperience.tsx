@@ -57,7 +57,7 @@ const WorkExperience: React.FC<WorkExperienceProps> = ({ experiences }) => {
                                         <Typography variant="body2" mb={1} color="#00000099">
                                             {job.startDate} - {job.endDate} &middot; {job.jobtype}
                                         </Typography>
-                                        <Typography variant="body2">
+                                        <Typography variant="body2" mt={1}>
                                             {job.description}
                                         </Typography>
                                     </Box>
