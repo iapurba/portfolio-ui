@@ -1,8 +1,9 @@
 FROM node:18-alpine as build
 WORKDIR /app
 COPY . .
-RUN npm install
-RUN npm run build
+RUN npm install -g yarn
+RUN yarn install
+RUN yarn build
 
 # Stage 2: Serve the built React app using Nginx
 FROM nginx:alpine
