@@ -34,10 +34,10 @@ const EducationHistory: React.FC<EducationProps> = ({
                         <Typography variant="h6" component="h2">
                             {item.institution}
                         </Typography>
-                        <Typography variant="body1" color="textSecondary">
+                        <Typography variant="body1" color="#5F6368">
                             {`${item.degree}, ${item.stream}`}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant="body2" color="#00000099">
                             {`${item.startYear} - ${item.endYear}`}
                         </Typography>
                     </CustomChildBox>
