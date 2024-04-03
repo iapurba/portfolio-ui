@@ -11,6 +11,7 @@ export const IntroductionWrapper = styled(Container)({
 export const BioText = styled(Typography)({
     fontSize: "16px",
     marginTop: "24px",
+    color: "#5F6368",
 });
 
 export const LinksContainer = styled(Box)({
