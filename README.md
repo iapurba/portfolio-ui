@@ -27,7 +27,11 @@ cd portfolio-ui
 3. Install dependencies using npm or yarn::
 
 ```bash
-npm insall or yarn insall
+npm insall
+```
+or
+```bash
+yarn insall
 ```
 
 4. Create a .env.development file in the root directory of the project and declare the following variables:
@@ -37,12 +41,17 @@ REACT_APP_SERVICE_DOMAIN=your_service_domain
 REACT_APP_PROFILE_ID=your_profile_id
 
 ```
+The profile id should be a valid MongoDB Object ID.
 Replace your_service_domain and your_profile_id with the appropriate values. These variables are required to feed data to the application.
 
 5. Start the development server:
 
 ```bash
-npm start or yarn start
+npm start
+```
+or
+```bash
+yarn start
 ```
 
 6. Open your web browser and navigate to http://localhost:3000 to view the application.
@@ -64,7 +73,7 @@ docker run -p 3000:3000 portfolio-ui
 
 Open your web browser and navigate to http://localhost:3000 to view the application running inside the Docker container.
 
-This Project Required Data to run is successfully. To set up the backend kindly follow the below repository. 
+This project requires approprate data to run it successfully. To set up the backend kindly follow the below repository. 
 
 [https://github.com/iapurba/portfolio-api](https://github.com/iapurba/portfolio-api)
 
